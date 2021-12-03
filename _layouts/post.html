@@ -27,6 +27,7 @@ sidebar:
 
     {%- assign result = hidden | where_exp: "item", "item == 'navigator'" -%}
     {%- if result.size == 0 -%}
+    <!--
     <div class="post-nav">
       {%- if page.previous -%}
         <a class="previous" href="{{ page.previous.url | relative_url }}" title="{{
@@ -41,6 +42,7 @@ sidebar:
       <span></span>
       {%- endif -%}
     </div>
+-->
     {%- endif -%}
 
     {%- assign result = hidden | where_exp: "item", "item == 'related_posts'" -%}
