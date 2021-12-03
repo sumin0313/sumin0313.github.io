@@ -3,7 +3,7 @@
 {% assign menu = '' %}
 {% for category in site.menu %}
   {% assign name = category | first %}
-  {% assign categories = menu | append: split_mark  | append: name %}
+  {% assign menu = menu | append: split_mark  | append: name %}
 {% endfor %}
 
 {% assign return = menu
