@@ -20,7 +20,7 @@ html {
          color: #fff;
           *transition: 0.1s color;
           
-        }*/
+        }
 
         @include media-query($on-laptop) {
           .page-link {
@@ -33,7 +33,7 @@ html {
             }
           }
         }
-      }
+      }*/
     }
 
     footer.site-footer {
