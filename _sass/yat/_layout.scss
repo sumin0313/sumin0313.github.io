@@ -15,12 +15,12 @@ html {
       background-color: transparent;
       transition: 0.1s height,background-color,box-shadow;
 
-      &.site-header {
+       /*&.site-header {
         .site-brand-inner, .page-link {
-          /*color: #fff;
+         color: #fff;
           *transition: 0.1s color;
-          */
-        }
+          
+        }*/
 
         @include media-query($on-laptop) {
           .page-link {
