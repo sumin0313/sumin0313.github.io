@@ -61,6 +61,7 @@
 
       var scrollStatus = "";
 
+       /*
       if (y <= 0) {
         scrollStatus = "top";
       } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
@@ -69,7 +70,7 @@
         var isScrollDown = (y - lastScrollY > 0) ? true : false;
         scrollStatus = isScrollDown ? "down" : "up";
       }
-
+  */
       lastScrollY = y;
       documentElement.setAttribute("data-scroll-status", scrollStatus);
     }
