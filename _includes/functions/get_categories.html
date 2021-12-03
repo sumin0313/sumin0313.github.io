@@ -6,7 +6,7 @@
   {% assign categories = menu | append: split_mark  | append: name %}
 {% endfor %}
 
-{% assign return = categories
+{% assign return = menu
   | remove_first: split_mark
   | split: split_mark
   | sort: self %}
