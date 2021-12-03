@@ -17,8 +17,9 @@ html {
 
       &.site-header {
         .site-brand-inner, .page-link {
-          color: #fff;
-          transition: 0.1s color;
+          /*color: #fff;
+          *transition: 0.1s color;
+          */
         }
 
         @include media-query($on-laptop) {
