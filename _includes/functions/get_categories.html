@@ -1,12 +1,12 @@
 {% assign split_mark = '<|>' %}
 
-{% assign menu = '' %}
-{% for category in site.menu %}
+{% assign categories = '' %}
+{% for category in site.categories %}
   {% assign name = category | first %}
-  {% assign menu = menu | append: split_mark  | append: name %}
+  {% assign categories = categories | append: split_mark  | append: name %}
 {% endfor %}
 
-{% assign return = menu
+{% assign return = categories
   | remove_first: split_mark
   | split: split_mark
   | sort: self %}
