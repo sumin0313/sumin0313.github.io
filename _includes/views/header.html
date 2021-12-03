@@ -71,9 +71,10 @@
         var isScrollDown = (y - lastScrollY > 0) ? true : false;
         scrollStatus = isScrollDown ? "down" : "up";
       }
-     */
+     
       lastScrollY = y;
       documentElement.setAttribute("data-scroll-status", scrollStatus);
+      */
     }
 
     window.addEventListener('scroll', function(e) {
