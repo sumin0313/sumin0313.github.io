@@ -286,7 +286,7 @@ html {
 
     a {
       text-decoration: none;
-
+    /*
       &:after {
         content: 'NEW';
         position: absolute;
@@ -299,7 +299,7 @@ html {
         font-weight: 600;
         border-radius: 2px;
       }
-
+    */
       &:visited:after {
         background-color: #fff;
       }
@@ -472,7 +472,7 @@ html {
         &:hover {
           color: #333;
         }
-
+/*
         &:after {
           content: 'NEW';
           position: absolute;
@@ -485,7 +485,7 @@ html {
           font-weight: 600;
           border-radius: 2px;
         }
-
+*/
         &:visited:after {
           background-color: #fff;
         }
@@ -748,7 +748,7 @@ html {
     &:hover {
       color: #000;
     }
-
+/*
     &:after {
       content: 'NEW';
       position: absolute;
@@ -761,7 +761,7 @@ html {
       font-weight: 600;
       border-radius: 2px;
     }
-
+*/
     &:visited:after {
       background-color: #fff;
     }
