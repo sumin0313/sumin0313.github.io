@@ -14,6 +14,6 @@ title: Portfolio
 
 ### 개인 프로젝트
 
-<img src="https://user-images.githubusercontent.com/53514823/147244999-3f6a9c83-bbd4-4b7d-8eca-1ff5229d17d1.png" width="200" height="300" title="img2">
+/*<img src="https://user-images.githubusercontent.com/53514823/147244999-3f6a9c83-bbd4-4b7d-8eca-1ff5229d17d1.png" width="200" height="300" title="img2">*/
 
 [JSP 웹 게시판(2021)](https://github.com/HwangSumin0313/HwangSumin0313.web){: target="_blank"}
