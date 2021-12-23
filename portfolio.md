@@ -3,8 +3,6 @@ layout: about
 title: Portfolio
 ---
 
-## 포트폴리오
-
 ### 개인 프로젝트
 
 [JSP 웹 게시판(2021)](https://github.com/HwangSumin0313/HwangSumin0313.web){: target="_blank"}
