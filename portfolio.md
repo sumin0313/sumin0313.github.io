@@ -21,7 +21,7 @@ title: Portfolio
 
 
 <TABLE style="text-align: center">
-  <tr style="width: auto">
+  <tr style="width: 300px">
     <td>개인 프로젝트</td>
     <td>팀 프로젝트</td>
   </tr>
