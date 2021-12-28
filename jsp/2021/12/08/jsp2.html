@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[JSP] 태그 | SUMIN’s BLOG</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="[JSP] 태그">
+<meta name="author" content="Hwang Sumin">
+<meta property="og:locale" content="ko">
+<meta name="description" content="태그의 종류 JSP 태그는 크게 스크립트 태그, 디렉티브 태그, 액션 태그로 나누어진다. 스크립트 태그는 HTML 코드에 자바 코드를 넣어 프로그램이 특정 기능을 수행할 수 있도록 한다. 디렉티브 태그는 JSP 페이지를 어떻게 처리할 것인지 설정하여 해당 정보를 JSP 컨테이너에 보낸다. 액션 태그는 클라이언트/서버에 명령을 지시하는 XML 형태의 태그로, JSP 페이지 간 제어를 이동할 수도 있다.">
+<meta property="og:description" content="태그의 종류 JSP 태그는 크게 스크립트 태그, 디렉티브 태그, 액션 태그로 나누어진다. 스크립트 태그는 HTML 코드에 자바 코드를 넣어 프로그램이 특정 기능을 수행할 수 있도록 한다. 디렉티브 태그는 JSP 페이지를 어떻게 처리할 것인지 설정하여 해당 정보를 JSP 컨테이너에 보낸다. 액션 태그는 클라이언트/서버에 명령을 지시하는 XML 형태의 태그로, JSP 페이지 간 제어를 이동할 수도 있다.">
+<link rel="canonical" href="/jekyll-theme-yat/jsp/2021/12/08/jsp2.html">
+<meta property="og:url" content="/jekyll-theme-yat/jsp/2021/12/08/jsp2.html">
+<meta property="og:site_name" content="SUMIN’s BLOG">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-12-08T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="[JSP] 태그">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Hwang Sumin"},"description":"태그의 종류 JSP 태그는 크게 스크립트 태그, 디렉티브 태그, 액션 태그로 나누어진다. 스크립트 태그는 HTML 코드에 자바 코드를 넣어 프로그램이 특정 기능을 수행할 수 있도록 한다. 디렉티브 태그는 JSP 페이지를 어떻게 처리할 것인지 설정하여 해당 정보를 JSP 컨테이너에 보낸다. 액션 태그는 클라이언트/서버에 명령을 지시하는 XML 형태의 태그로, JSP 페이지 간 제어를 이동할 수도 있다.","headline":"[JSP] 태그","dateModified":"2021-12-08T00:00:00+00:00","datePublished":"2021-12-08T00:00:00+00:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/jsp/2021/12/08/jsp2.html"},"url":"/jekyll-theme-yat/jsp/2021/12/08/jsp2.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="SUMIN's BLOG">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+ <!--<img class="site-favicon" title="SUMIN&#39;s BLOG" src="" onerror="this.style.display='none'">-->
+  <img class="site-favicon" title="HOME" src="" onerror="this.style.display='none'">
+  SUMIN's BLOG
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/menu.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a><a class="page-link" href="/jekyll-theme-yat/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html">PORTFOLIO</a>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+     
+      if (y <= 0) {
+        scrollStatus = "top";
+      }  
+       else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+     
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+      
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">[JSP] 태그</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <!--
+<p class="post-meta">
+    <time class="dt-published" datetime="2021-12-08T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Dec 08, 2021
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 13 mins</span>
+  </p>
+--><div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JSP">#JSP</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="태그의-종류"><strong>태그의 종류</strong></h2>
+
+<p>JSP 태그는 크게 스크립트 태그, 디렉티브 태그, 액션 태그로 나누어진다. <strong>스크립트 태그</strong>는 HTML 코드에 자바 코드를 넣어 프로그램이 특정 기능을 수행할 수 있도록 한다. <strong>디렉티브 태그</strong>는 JSP 페이지를 어떻게 처리할 것인지 설정하여 해당 정보를 JSP 컨테이너에 보낸다. <strong>액션 태그</strong>는 클라이언트/서버에 명령을 지시하는 XML 형태의 태그로, JSP 페이지 간 제어를 이동할 수도 있다.</p>
+
+<h3 id="1-스크립트-태그"><strong>1. 스크립트 태그</strong></h3>
+
+<p>스크립트 태그는 선언문, 스크립틀릿, 표현문 세 가지로 나누어지며 <code class="language-plaintext highlighter-rouge">&lt;% ... %&gt;</code>의 형식을 갖는다. 해당 형식의 코드는 JSP 파일을 서블릿 클래스로 변환할 때, <strong>JSP 컨테이너</strong>에 의해 처리된다.</p>
+
+<ul>
+  <li>
+<strong>선언문</strong>: <code class="language-plaintext highlighter-rouge">&lt;%! ... %&gt;</code> 와 같은 형식으로 작성된 코드로, <strong>자바 변수나 메소드</strong>를 정의하는데 사용한다.</li>
+  <li>
+<strong>스크립틀릿</strong>: <code class="language-plaintext highlighter-rouge">&lt;% ... %&gt;</code> 와 같은 형식으로 작성된 코드는 스크립틀릿 태그로 선언문에서 정의된 변수나 메소드를 이용해 <strong>자바 로직 코드</strong>를 작성하는데 사용한다.</li>
+  <li>
+<strong>표현문</strong>: <code class="language-plaintext highlighter-rouge">&lt;%= ... %&gt;</code> 와 같은 형식으로 작성된 코드는 표현문 태그로 <strong>결과</strong>를 문자열 형태로 출력하는데 사용한다.</li>
+</ul>
+
+<p>다시 말해, 두 수 a와 b를 더하는 코드를 작성하고자 할 때 a, b를 선언하거나 초기화 하기 위해서는 선언문 태그를, a, b를 더하는 식인 a+b를 작성하기 위해서는 스크립틀릿 태그를, 둘을 더한 결과값을 출력하기 위해서는 표현문 태그를 사용하는 것이다.</p>
+
+<h3 id="2-디렉티브-태그"><strong>2. 디렉티브 태그</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;%@ ... %&gt;</code> 와 같은 형식으로 작성된 코드는 디렉티브 태그로 JSP 페이지를 어떻게 처리할 것인지 설정하기 위한 태그이다. JSP 파일이 서블릿 클래스로 바뀔 때 JSP 파일과 관련된 정보를 JSP 컨테이너에 지시하는 메시지이다. 디렉티브 태그는 page, include, taglib 세 가지로 나누어진다.</p>
+
+<ul>
+  <li>
+<strong>page</strong>: 해당 태그는 JSP 페이지에 대한 정보를 설정한다. 기본적으로 파일 최상단에 선언하는 것을 권장한다. 자주 쓰이는 속성은 다음과 같다.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">속성</th>
+      <th>설명</th>
+      <th style="text-align: center">기본값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">language</td>
+      <td>현재 JSP 페이지가 사용할 프로그래밍 언어를 설정한다.</td>
+      <td style="text-align: center">java</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">contentType</td>
+      <td>현재 JSP 페이지가 생성할 문서의 콘텐츠 유형을 설정한다.</td>
+      <td style="text-align: center">text/html</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">pageEncoding</td>
+      <td>현재 JSP 페이지의 문자 인코딩을 설정한다.</td>
+      <td style="text-align: center">ISO-8859-1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">import</td>
+      <td>현재 JSP 페이지가 사용할 자바 클래스를 설정한다.</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">session</td>
+      <td>현재 JSP 페이지의 세션 사용 여부를 설정한다.</td>
+      <td style="text-align: center">true</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">buffer</td>
+      <td>현재 JSP 페이지의 출력버퍼 크기를 설정한다.</td>
+      <td style="text-align: center">8KB</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">autoFlush</td>
+      <td>출력 버퍼의 동작 제어를 설정한다.</td>
+      <td style="text-align: center">true</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">isThreadSafe</td>
+      <td>현재 JSP 페이지의 멀티스레드 허용 여부를 설정한다.</td>
+      <td style="text-align: center">true</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">info</td>
+      <td>현재 JSP 페이지에 대한 설명을 설정한다.</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">errorPage</td>
+      <td>현재 JSP 페이지에 오류가 발생했을 때 보여줄 오류 페이지를 설정한다.</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">isErrorPage</td>
+      <td>현재 JSP 페이지가 오류 페이지인지 여부를 설정한다.</td>
+      <td style="text-align: center">false</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">isELIgnored</td>
+      <td>현재 JSP 페이지의 표현 언어(EL) 지원 여부를 설정한다.</td>
+      <td style="text-align: center">false</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">isScriptingEnabled</td>
+      <td>현재 JSP 페이지의 스크립트 태그 사용 여부를 설정한다.</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>
+<strong>include</strong>: 해당 태그는 JSP 페이지의 특정 영역에 다른 문서를 포함한다. JSP 파일 내 어디에서든 선언할 수 있으며 외부 파일이 현재 JSP 파일과 같은 디렉토리에 있으면 파일명만 설정하고 그렇지 않으면 전체 경로를 설정해야 한다. 해당 태그를 사용하면 파일의 내용이 <strong>병합</strong>되어 번역된다. 즉 현재 JSP 페이지에서 include 디렉티브 태그가 사용된 위치에 설정된 파일의 원본 내용을 ‘있는 그대로’ 붙여넣은 다음 전체 페이지를 서블릿으로 변환한다. 이는 머리글과 바닥글 같은 공통된 부분을 별도의 파일로 만들어 모듈화할 수 있다. 그래서 코드를 재사용하고 중복된 코드를 줄입으로써 유지 보수 측면에서 유용하다.</li>
+  <li>
+<strong>taglib</strong>: 해당 태그는 JSP 페이지에서 사용할 태그 <strong>라이브러리를</strong> 설정한다. 일반적으로 웹 애플리케이션에서 쉽게 접할 수 있는 것은 JSTL 태그 라이브러리로 자주 사용되는 핵심 기능을 제공한다.</li>
+</ul>
+
+<h3 id="3-액션-태그"><strong>3. 액션 태그</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;jsp: ... /&gt;</code>와 같은 형식으로 작성된 코드는 액션 태그로 서버/클라이언트에게 어떤 행동을 하도록 명령하는 태그이다. JSP 페이지와 페이지 사이를 제어하거나 다른 페이지의 실행 결과 내용을 현재 페이지에 포함하거나, 자바 빈즈 등의 다양한 기능을 제공한다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">액션태그</th>
+      <th style="text-align: center">형식</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">forward</td>
+      <td style="text-align: center">&lt;jsp:forward …/&gt;</td>
+      <td>다른 페이지로의 이동과 같은 페이지 흐름을 제어한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">include</td>
+      <td style="text-align: center">&lt;jsp:include …/&gt;</td>
+      <td>외부 페이지의 내용을 포함하거나 페이지를 모듈화한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">useBean</td>
+      <td style="text-align: center">&lt;jsp:useBean …/&gt;</td>
+      <td>JSP 페이지에 자바빈즈를 설정한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">setProperty</td>
+      <td style="text-align: center">&lt;jsp:setProperty …/&gt;</td>
+      <td>자바빈즈의 프로퍼티 값을 설정한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">getProperty</td>
+      <td style="text-align: center">&lt;jsp:getProperty …/&gt;</td>
+      <td>자바빈즈의 프로퍼티 값을 얻어온다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">param</td>
+      <td style="text-align: center">&lt;jsp:param …/&gt;</td>
+      <td>
+<forward>, <include>, <plugin> 태그에 인자를 추가한다.</plugin></include></forward>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">plugin</td>
+      <td style="text-align: center">&lt;jsp:plugin …/&gt;</td>
+      <td>웹 브라우저에 자바 애플릿을 실행한다. 자바 플러그인에 대한 object 또는 embed 태그를 만드는 브라우저별 코드를 생성한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">element</td>
+      <td style="text-align: center">&lt;jsp:element …/&gt;</td>
+      <td>동적 XML 요소를 설정한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">attribute</td>
+      <td style="text-align: center">&lt;jsp:attribute …/&gt;</td>
+      <td>동적으로 정의된 XML 요소의 속성을 설정한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">body</td>
+      <td style="text-align: center">&lt;jsp:body …/&gt;</td>
+      <td>동적으로 정의된 XML 요소의 몸체를 설정한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">text</td>
+      <td style="text-align: center">&lt;jsp:text …/&gt;</td>
+      <td>JSP 페이지 및 문서에서 템플릿 텍스트를 작성한다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>여기서 눈여겨볼 태그는 <strong>include 액션 태그</strong>이다. 우리는 앞서 <strong>include 디렉티브 태그</strong>를 살펴보았다. 다른 페이지를 포함하는 기능을 가지고 있다는 점은 두 태그가 거의 같다. 그러나 include 디렉티브 태그는 단순히 다른 페이지의 내용이 텍스트로 포함되지만 include 액션 태그는 처리 결과 내용을 포함한다. 따라서 구체적으로 다음과 같은 차이가 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">구분</th>
+      <th style="text-align: center">incldue 액션 태그</th>
+      <th style="text-align: center">incldue 디렉티브 태그</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">처리 시간</td>
+      <td style="text-align: center">요청시 자원 표함</td>
+      <td style="text-align: center">번역시 자원 포함</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">기능</td>
+      <td style="text-align: center">별도의 파일로 요청 처리 흐름 이동</td>
+      <td style="text-align: center">현재 페이지에 삽입</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">데이터 전달 방법</td>
+      <td style="text-align: center">request 기본 내장 객체나 param 액션 태그를 이용하여 파라미터 전달</td>
+      <td style="text-align: center">페이지 내의 변수를 선언한 후 변수에 값 저장</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">용도</td>
+      <td style="text-align: center">화면 레이아웃의 일부분을 모듈화할 때</td>
+      <td style="text-align: center">공통으로 사용되는 코드나 저작권과 같은 문장을 포함하는 경우</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">기타</td>
+      <td style="text-align: center">동적 페이지에 사용</td>
+      <td style="text-align: center">정적 페이지에 사용</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/jsp/2021/12/08/jsp1.html" title="[JSP] WEB의 기초">[JSP] WEB의 기초</a><span></span>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/java/2020/04/21/java4.html" title="">[JAVA] 객체 지향 프로그래밍(OOP)</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/06/25/ex5.html" title="">exercise:상속</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/06/30/ex7.html" title="">exercise: 제네릭과 컬렉션</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/22/js3.html" title="">[javascript] 농구 게임 만들기(1)</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>27</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-HTML5&amp;CSS3">
+          HTML5&amp;CSS3 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JAVA">
+          JAVA <span>14</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JSP">
+          JSP <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-javascript">
+          javascript <span>4</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 Hwang Sumin</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Contact: hwang.sumin.0313@gmail.com </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

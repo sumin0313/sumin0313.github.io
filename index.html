@@ -1,0 +1,3193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Home | SUMIN’s BLOG</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Home">
+<meta name="author" content="Hwang Sumin">
+<meta property="og:locale" content="ko">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+<link rel="canonical" href="/jekyll-theme-yat/">
+<meta property="og:url" content="/jekyll-theme-yat/">
+<meta property="og:site_name" content="SUMIN’s BLOG">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Home">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Hwang Sumin"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Home","@type":"WebSite","url":"/jekyll-theme-yat/","name":"SUMIN’s BLOG","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="SUMIN's BLOG">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+ <!--<img class="site-favicon" title="SUMIN&#39;s BLOG" src="" onerror="this.style.display='none'">-->
+  <img class="site-favicon" title="HOME" src="" onerror="this.style.display='none'">
+  SUMIN's BLOG
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/menu.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a><a class="page-link" href="/jekyll-theme-yat/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html">PORTFOLIO</a>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+     
+      if (y <= 0) {
+        scrollStatus = "top";
+      }  
+       else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+     
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+      
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/jekyll-theme-yat)"></div>
+        <img class="img-placeholder" src="/jekyll-theme-yat">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner"><div class="page-banner-default">
+            <h1 class="page-banner-heading">
+              SUMIN's BLOG
+            </h1>
+            <h2 class="page-banner-subheading">
+              프로그래밍 공부와 포트폴리오 업로드를 위한 공간입니다
+            </h2>
+          </div></div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="articles">
+  
+
+  
+
+
+  <div class="pagination">
+  <!-- Post list links -->
+  <ul class="post-list">
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/jsp/2021/12/08/jsp2.html">
+          [JSP] 태그
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 08, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 13 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/jsp/2021/12/08/jsp2.html">-->
+      <p href="/jekyll-theme-yat/jsp/2021/12/08/jsp2.html">
+        태그의 종류
+
+JSP 태그는 크게 스크립트 태그, 디렉티브 태그, 액션 태그로 나누어진다. 스크립트 태그는 HTML 코드에 자바 코드를 넣어 프로그램이 특정 기능을 수행할 수 있도록 한다. 디렉티브 태그는 JSP 페이지를 어떻게 처리할 것인지 설정하여 해당 정보를 JSP 컨테이너에 보낸다. 액션 태그는 클라이언트/서...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JSP">#JSP</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/jsp/2021/12/08/jsp1.html">
+          [JSP] WEB의 기초
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 08, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/jsp/2021/12/08/jsp1.html">-->
+      <p href="/jekyll-theme-yat/jsp/2021/12/08/jsp1.html">
+        WEB
+
+웹이란 인터넷으로 주고받은 정보 혹은 서비스를 제공받는 공간이다. 웹은 클라이언트-서버 방식으로 동작하는데 클라이언트가 서버에 정보를 요청하면 해당 정보에 대한 결과를 응답하는 형식이다. 이때 웹 상에서 보여지는 문서는 정적 문서와 동적 문서가 있다.
+
+정적 문서는 이미 만들어져 개발자가 문서를 수정하지 않는 한...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JSP">#JSP</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/22/js4.html">
+          [javascript] 농구 게임 만들기(2)
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jan 22, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 24 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/javascript/2021/01/22/js4.html">-->
+      <p href="/jekyll-theme-yat/javascript/2021/01/22/js4.html">
+        본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.
+
+농구 게임 만들기(2)
+
+지난 글에서 아래의 6번까지 완성했다. 7번의 턴 돌리기도 얼추 완성이 되었으니 이제 막바지 작업만 남은 셈이다.
+
+1. 컴퓨터부터 슛을 한다.
+2. 컴퓨터는...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML">#HTML</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS">#CSS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#javascript">#javascript</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/22/js3.html">
+          [javascript] 농구 게임 만들기(1)
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jan 22, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 49 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/javascript/2021/01/22/js3.html">-->
+      <p href="/jekyll-theme-yat/javascript/2021/01/22/js3.html">
+        본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.
+
+농구 게임 만들기**
+
+코드를 작성하기 앞서, 어떤 방식으로 진행할 것인지 계획을 세워보자.
+
+1. 컴퓨터부터 슛을 한다.
+2. 컴퓨터는 2점슛과 3점슛 중 랜덤하게 결정한...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML">#HTML</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS">#CSS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#javascript">#javascript</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/18/js2.html">
+          [javascript] 로또 번호 생성기 만들기
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jan 18, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 24 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/javascript/2021/01/18/js2.html">-->
+      <p href="/jekyll-theme-yat/javascript/2021/01/18/js2.html">
+        본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.
+
+로또 번호 생성기 만들기**
+
+코드를 작성하기 앞서, 어떤 방식으로 진행할 것인지 계획을 세워보자.
+
+1. 1부터 45까지의 수로 채워진 배열 `all` 생성
+2. 숫자 6개를 넣을 배열 `p...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML">#HTML</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS">#CSS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#javascript">#javascript</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/06/js1.html">
+          [javascript] 가위바위보 게임 만들기
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jan 06, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 11 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/javascript/2021/01/06/js1.html">-->
+      <p href="/jekyll-theme-yat/javascript/2021/01/06/js1.html">
+        본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.
+
+가위바위보 게임이란?
+
+게임의 요구사항을 먼저 살펴보도록 하자.
+
+※요구사항※
+
+1. 사용자와 컴퓨터는 동시에 패를 낸다.  
+2. 컴퓨터는 매번 랜덤한 패를 낸다.  
+3. 서로의 패를 ...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML">#HTML</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS">#CSS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#javascript">#javascript</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%837.html">
+          웹사이트 layout7
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 13, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 10 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/html5&css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%837.html">-->
+      <p href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%837.html">
+        레이아웃 구성
+
+
+
+웹페이지를 구성하는 기본 레이아웃 그 일곱 번째로, HTML5 코드와 CSS3 코드로 구성되어 있다.
+CSS 코드의 경우 레이아웃의 각 구역을 구분하는 용도로만 사용되었으므로 필요에 따라 수정해 사용하면 된다.
+각각의 코드는 아래와 같다.
+
+HTML 코드
+
+&lt;!DOCTYPE html&amp;gt...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML5">#HTML5</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS3">#CSS3</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#layout">#layout</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%836.html">
+          웹사이트 layout6
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 13, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/html5&css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%836.html">-->
+      <p href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%836.html">
+        레이아웃 구성
+
+
+
+웹페이지를 구성하는 기본 레이아웃 그 여섯 번째로, HTML5 코드와 CSS3 코드로 구성되어 있다.
+CSS 코드의 경우 레이아웃의 각 구역을 구분하는 용도로만 사용되었으므로 필요에 따라 수정해 사용하면 된다.
+각각의 코드는 아래와 같다.
+
+HTML 코드
+
+&lt;&lt;!DOCTYPE html&amp;g...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML5">#HTML5</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS3">#CSS3</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#layout">#layout</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%835.html">
+          웹사이트 layout5
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 13, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 7 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/html5&css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%835.html">-->
+      <p href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%835.html">
+        레이아웃 구성
+
+
+
+웹페이지를 구성하는 기본 레이아웃 그 다섯 번째로, HTML5 코드와 CSS3 코드로 구성되어 있다.
+CSS 코드의 경우 레이아웃의 각 구역을 구분하는 용도로만 사용되었으므로 필요에 따라 수정해 사용하면 된다.
+각각의 코드는 아래와 같다.
+
+HTML 코드
+
+&lt;!DOCTYPE html&gt;
+&amp;l...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML5">#HTML5</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS3">#CSS3</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#layout">#layout</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%834.html">
+          웹사이트 layout4
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 13, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/html5&css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%834.html">-->
+      <p href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%834.html">
+        레이아웃 구성
+
+
+
+웹페이지를 구성하는 기본 레이아웃 그 네 번째로, HTML5 코드와 CSS3 코드로 구성되어 있다.
+CSS 코드의 경우 레이아웃의 각 구역을 구분하는 용도로만 사용되었으므로 필요에 따라 수정해 사용하면 된다.
+각각의 코드는 아래와 같다.
+
+HTML 코드
+
+&lt;!DOCTYPE html&gt;
+&lt;ht...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML5">#HTML5</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS3">#CSS3</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#layout">#layout</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%833.html">
+          웹사이트 layout3
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 13, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/html5&css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%833.html">-->
+      <p href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%833.html">
+        레이아웃 구성
+
+
+
+웹페이지를 구성하는 기본 레이아웃 그 세 번째로, HTML5 코드와 CSS3 코드로 구성되어 있다.
+CSS 코드의 경우 레이아웃의 각 구역을 구분하는 용도로만 사용되었으므로 필요에 따라 수정해 사용하면 된다.
+각각의 코드는 아래와 같다.
+
+HTML 코드
+
+&lt;!DOCTYPE html&gt;
+&lt;ht...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML5">#HTML5</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS3">#CSS3</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#layout">#layout</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/12/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%832.html">
+          웹사이트 layout2
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 12, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 7 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/html5&css3/2020/12/12/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%832.html">-->
+      <p href="/jekyll-theme-yat/html5&amp;css3/2020/12/12/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%832.html">
+        레이아웃 구성
+
+
+
+웹페이지를 구성하는 기본 레이아웃 그 두 번째로, HTML5 코드와 CSS3 코드로 구성되어 있다.
+CSS 코드의 경우 레이아웃의 각 구역을 구분하는 용도로만 사용되었으므로 필요에 따라 수정해 사용하면 된다.
+각각의 코드는 아래와 같다.
+
+HTML 코드
+
+&lt;!DOCTYPE html&gt;
+&lt;h...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML5">#HTML5</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS3">#CSS3</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#layout">#layout</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/12/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%831.html">
+          웹사이트 layout1
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 12, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/html5&css3/2020/12/12/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%831.html">-->
+      <p href="/jekyll-theme-yat/html5&amp;css3/2020/12/12/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%831.html">
+        레이아웃 구성
+
+
+
+웹페이지를 구성하는 기본 레이아웃으로, HTML5 코드와 CSS3 코드로 구성되어 있다.
+CSS 코드의 경우 레이아웃의 각 구역을 구분하는 용도로만 사용되었으므로 필요에 따라 수정해 사용하면 된다.
+각각의 코드는 아래와 같다.
+
+HTML 코드
+
+&lt;!DOCTYPE html&gt;
+&lt;html la...
+      </p>
+      
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML5">#HTML5</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS3">#CSS3</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#layout">#layout</a>
+</div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/06/30/ex7.html">
+          exercise: 제네릭과 컬렉션
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jun 30, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 50 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/06/30/ex7.html">-->
+      <p href="/jekyll-theme-yat/java/2020/06/30/ex7.html">
+        실습문제
+
+문제 1번
+Scanner 클래스로 -1이 입력될 때까지 양의 정수를 입력받아 벡터에 저장하고 벡터를 검색하여 가장 큰 수를 출력하는 프로그램을 작성하라.
+
+예시)
+  정수(-1이 입력될 때까지)&gt;&gt; 10 6 22 6 88 77 -1
+  가장 큰 수는 88
+
+
+import java.util.*;
+
+public class exerc...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/06/25/ex5.html">
+          exercise:상속
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jun 25, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 40 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/06/25/ex5.html">-->
+      <p href="/jekyll-theme-yat/java/2020/06/25/ex5.html">
+        실습문제 5
+
+문제 1번
+다음 TV 클래스가 있다.
+
+class TV{
+   private int size;
+   public TV(int size) { this.size = size; }
+   protected int getSize() { return size; }
+}
+
+
+다음 main() 메소드와 실행 결과를 참고하여 TV를 상속받은 ColorTV 클래...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/06/19/ex4.html">
+          exercise: 클래스와 객체
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jun 19, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 31 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/06/19/ex4.html">-->
+      <p href="/jekyll-theme-yat/java/2020/06/19/ex4.html">
+        실습문제 5
+
+문제 1번
+자바 클래스를 작성하는 연습을 해보자. 다음 main() 메소드를 실행하였을 때 예시와 같이 출력되도록 TV 클래스를 작성하라.
+
+public static void main(String[] args) {
+   TV myTV = new TV("LG", 2017, 32); //LG에서 만든 2017년 32인치
+   myTV.sho...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/05/31/java11.html">
+          [JAVA] 제네릭과 컬렉션
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> May 31, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 8 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/05/31/java11.html">-->
+      <p href="/jekyll-theme-yat/java/2020/05/31/java11.html">
+        컬렉션(Collection)
+
+배열은 여러 개의 데이터를 다루는데 편리한 구조이지만 데이터의 크기를 예측할 수 없거나 삽입과 삭제가 빈번한 응용프로그램에서는 사용하기 불편하다. 때문에 가변 크기를 가지고, 자동으로 자리를 옮겨주는 컬렉션은 중요한 구조이다. java.util 패키지는 컬렉션을 위해 아래와 같은 자바 인터페이스와 클래...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/05/21/java10.html">
+          [JAVA] 추상클래스와 인터페이스
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> May 21, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 13 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/05/21/java10.html">-->
+      <p href="/jekyll-theme-yat/java/2020/05/21/java10.html">
+        추상메소드(abstract method)
+
+선언되어 있으나 구현되지 않은 메소드로, abstract를 사용해 선언한다. 서브 클래스에서 오버라이딩하여 구현하는 게 원칙이다. 
+슈퍼 클래스에서 구체화하기 애매한 메소드를 대략적인 기능만 정해두고 서브 클래스에서 구체화할 때 사용한다. 아래 코드는 추상 메소드 선언의 예시이다.
+
+public...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/05/15/java9.html">
+          [JAVA] 메소드 오버라이딩
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> May 15, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 13 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/05/15/java9.html">-->
+      <p href="/jekyll-theme-yat/java/2020/05/15/java9.html">
+        메소드 오버라이딩(Method Overriding)
+
+같은 이름을 가지고 있으나 다른 기능을 할 때 메소드 오버로딩(overloading) 이라고 칭한 바 있다. 메소드 오버라이딩은 메소드를 재정의 하는 것을 의미한다. 
+슈퍼 클래스를 상속한 서브 클래스는 슈퍼 클래스 메소드의 이름, 매개변수 타입 및 개수, 리턴 타입 등 모든 것을 동일하...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/05/05/java8.html">
+          [JAVA] 상속
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> May 05, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/05/05/java8.html">-->
+      <p href="/jekyll-theme-yat/java/2020/05/05/java8.html">
+        상속
+
+상속은 객체 지향의 대표적인 특징 중 하나로 부모 클래스에 만들어진 필드, 메소드를 자식 클래스가 물려받는 것을 의미한다. 
+때문에 중복된 코드의 작성이 불필요하고 클래스의 재사용과 확장이 용이하며 계층적 분류를 통해 클래스의 관리가 용이해진다는 장점이 있다.
+
+
+
+그러나 클래스의 다중 상속은 지원하지 않으며 상속 횟수는 무제한이...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/05/04/java7.html">
+          [JAVA] static과 final
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> May 04, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 10 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/05/04/java7.html">-->
+      <p href="/jekyll-theme-yat/java/2020/05/04/java7.html">
+        static 멤버
+
+static 멤버는 클래스당 하나만 생성되는 멤버로, 객체를 생성하지 않고도 사용할 수 있는 멤버이다. 동일한 클래스의 모든 객체들이 공유하며 main() 메소드가 실행되기 전에 생성된다.
+따라서 static 멤버는 static 멤버가 포함된 객체를 생성하기 전에도 사용할 수 있다. static 멤버는 클래스당 하나...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/04/30/java6.html">
+          [JAVA] 메소드와 접근지정자
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 30, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/04/30/java6.html">-->
+      <p href="/jekyll-theme-yat/java/2020/04/30/java6.html">
+        메소드란?
+
+클래스의 멤버 함수로 자바의 모든 메소드는 캡슐화 원칙에 의해 반드시 클래스 안에 있어야 한다. 구성 형식은 다음과 같다.
+
+
+
+접근 지정자는 캡슐화 특성상 멤버를 보호해야 하는 상황에서 클래스나 일부 멤버를 공개하여 다른 클래스에서 접근하도록 허용하기 위한 역할을 하며 
+아래와 같이 4가지 접근 지정자에 따라 공개되는 범위...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/04/30/java5.html">
+          [JAVA] 생성자와 this
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 30, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/04/30/java5.html">-->
+      <p href="/jekyll-theme-yat/java/2020/04/30/java5.html">
+        개념 정리
+
+객체 지향 프로그래밍 게시글에서 객체에 대한 이야기를 한 바 있다. 우리가 변수를 사용하기 위해 선언-생성-초기화의 과정을 거치듯
+객체도 마찬가지이다.
+
+생성자(constructor)
+
+생성자는 객체의 초기화를 위해 실행되는 메소드다. 클래스와 이름이 동일하고 객체 생성 시 자동으로 한 번은 호출된다는 특징이 있다. 
+따라서...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/04/21/java4.html">
+          [JAVA] 객체 지향 프로그래밍(OOP)
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 21, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 5 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/04/21/java4.html">-->
+      <p href="/jekyll-theme-yat/java/2020/04/21/java4.html">
+        객체 지향 프로그래밍(OOP)
+
+객체 지향 프로그래밍은 객체들 간의 상호 작용으로 표현되며 클래스 혹은 객체들의 집합으로 작성된다.
+
+
+
+다음은 객체 지향 프로그래밍의 특징이다.
+
+1. 캡슐화
+
+캡슐화란 객체를 캡슐로 싸서 내부를 보호하고 볼 수 없게 하는 것으로 객체 지향 프로그래밍의 가장 본질적인 특징이다. 외부에서 봤을 때 추상적인 ...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/04/17/java3.html">
+          [JAVA] 개념 및 용어정리
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 17, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/04/17/java3.html">-->
+      <p href="/jekyll-theme-yat/java/2020/04/17/java3.html">
+        용어 및 개념
+
+컴파일
+
+자바로 작성된 코드를 소스파일이라고 한다. 소스파일은 기본적으로 사람이 이해할 수 있는 프로그래밍 언어로 쓰인 텍스트 파일이다. 그러나 컴퓨터는 사람 기준으로 쓰인 파일을 읽지 못한다. 
+때문에 소스 파일을 컴퓨터가 이해할 수 있는 기계어로 만드는 과정이 필요한데 이를 컴파일이라고 한다. 자바의 ...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/04/17/java2.html">
+          [JAVA] 배열
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 17, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/04/17/java2.html">-->
+      <p href="/jekyll-theme-yat/java/2020/04/17/java2.html">
+        레퍼런스 변수와 배열
+
+자바에서 배열은 두 단계를 거쳐 생성된다.
+
+  배열에 대한 레퍼런스 변수(주소값) 선언
+  배열 생성(배열의 저장 공간 할당)
+
+
+1. 배열에 대한 레퍼런스 변수(주소값) 선언
+
+
+
+선언만으로는 배열 공간이 할당되지 않으며 레퍼런스 변수만 생성된다. 레퍼런스 변수는 주소값을 가질 뿐, 배열 그 자체라고 할 수 없다. 
+  때문에 ...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+<li>
+      <!---->
+
+      
+      
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/java/2020/04/06/java1.html">
+          [JAVA] 기본 구조 및 데이터 타입
+        </a>
+      </h2>
+      <!--<div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 06, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/java/2020/04/06/java1.html">-->
+      <p href="/jekyll-theme-yat/java/2020/04/06/java1.html">
+        자바의 기본 구조
+
+
+
+1. 클래스(class)
+  ‘class’ 키워드로 선언하며 public 선언 시 다른 클래스에 접근이 가능하다.
+
+2. 메소드(method)
+  객체지향언어(OOP)에서 함수를 칭하는 단어로, 다른 메소드를 호출하거나 호출될 수 있다.
+
+3. 메인(main)
+  프로그램이 실행될 때 가장 ...
+      </p>
+      
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div>
+    </li>
+</ul>
+
+  <!-- Pagination links -->
+</div>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>27</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-HTML5&amp;CSS3">
+          HTML5&amp;CSS3 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JAVA">
+          JAVA <span>14</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JSP">
+          JSP <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-javascript">
+          javascript <span>4</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 Hwang Sumin</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Contact: hwang.sumin.0313@gmail.com </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

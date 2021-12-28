@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[javascript] 농구 게임 만들기(2) | SUMIN’s BLOG</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="[javascript] 농구 게임 만들기(2)">
+<meta name="author" content="Hwang Sumin">
+<meta property="og:locale" content="ko">
+<meta name="description" content="본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.">
+<meta property="og:description" content="본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.">
+<link rel="canonical" href="/jekyll-theme-yat/javascript/2021/01/22/js4.html">
+<meta property="og:url" content="/jekyll-theme-yat/javascript/2021/01/22/js4.html">
+<meta property="og:site_name" content="SUMIN’s BLOG">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-01-22T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="[javascript] 농구 게임 만들기(2)">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Hwang Sumin"},"description":"본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.","headline":"[javascript] 농구 게임 만들기(2)","dateModified":"2021-01-22T00:00:00+00:00","datePublished":"2021-01-22T00:00:00+00:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/javascript/2021/01/22/js4.html"},"url":"/jekyll-theme-yat/javascript/2021/01/22/js4.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="SUMIN's BLOG">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+ <!--<img class="site-favicon" title="SUMIN&#39;s BLOG" src="" onerror="this.style.display='none'">-->
+  <img class="site-favicon" title="HOME" src="" onerror="this.style.display='none'">
+  SUMIN's BLOG
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/menu.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a><a class="page-link" href="/jekyll-theme-yat/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html">PORTFOLIO</a>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+     
+      if (y <= 0) {
+        scrollStatus = "top";
+      }  
+       else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+     
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+      
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">[javascript] 농구 게임 만들기(2)</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <!--
+<p class="post-meta">
+    <time class="dt-published" datetime="2021-01-22T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jan 22, 2021
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 24 mins</span>
+  </p>
+--><div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML">#HTML</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS">#CSS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#javascript">#javascript</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><em>본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.</em></p>
+
+<h2 id="농구-게임-만들기2"><strong>농구 게임 만들기(2)</strong></h2>
+
+<p><a href="https://sumin0313.github.io/javascript/2021/01/22/js3.html"><em>지난 글</em></a>에서 아래의 6번까지 완성했다. 7번의 턴 돌리기도 얼추 완성이 되었으니 이제 막바지 작업만 남은 셈이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 컴퓨터부터 슛을 한다.
+2. 컴퓨터는 2점슛과 3점슛 중 랜덤하게 결정한다.
+3. 슛이 성공하면 컴퓨터의 점수를 올려준다.
+4. 사용자의 차례로 바꾼다.
+5. 사용자는 2점슛과 3점슛 중 원하는 버튼을 클릭한다.
+6. 슛이 성공하면 사용자의 점수를 올려준다.
+7. 남은 횟수를 1 줄이고 컴퓨터의 턴으로 돌린다.
+8. 남은 횟수가 0이 될 때까지 반복 후 양쪽의 점수를 비교해 승자를 정한다.
+</code></pre></div></div>
+
+<h2 id="7-남은-횟수를-1-줄이고-컴퓨터의-턴으로-돌린다"><strong>7. 남은 횟수를 1 줄이고 컴퓨터의 턴으로 돌린다.</strong></h2>
+
+<p>횟수를 차감하는 방법은 득점했을 때 스코어를 더하는 방법과 같다. 우선 횟수를 저장할 전역 변수를 하나 만들자.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">turn_left</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>남은 횟수를 차감하기 위한 코드는 사용자가 슛을 던진 후에 이루어져야 하므로 <code class="language-plaintext highlighter-rouge">user_shoot()</code> 함수 내 <code class="language-plaintext highlighter-rouge">Shoot()</code> 함수 아래에 작성해야 한다. 
+DOM 엘리먼트에 접근해 얻은 값을 <code class="language-plaintext highlighter-rouge">score_element</code>에 저장하고 <code class="language-plaintext highlighter-rouge">innerHTML</code>을 사용해 1회 차감된 횟수를 적용했다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">user_shoot</span><span class="p">(</span><span class="nx">user_shootType</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">turn_times_element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">shots_left</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">score_element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">score_user</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//엘리먼트 값 저장</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">turn</span><span class="o">===</span><span class="dl">'</span><span class="s1">컴퓨터</span><span class="dl">'</span><span class="p">){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">`지금은 </span><span class="p">${</span><span class="nx">turn</span><span class="p">}</span><span class="s2"> 차례입니다.`</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+        <span class="nx">Shoot</span><span class="p">(</span><span class="nx">turn</span><span class="p">,</span><span class="nx">user_shootType</span><span class="p">,</span><span class="nx">score_element</span><span class="p">);</span>
+
+        <span class="nx">turn</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">컴퓨터</span><span class="dl">'</span><span class="p">;</span>
+	
+    	<span class="c1">//1회 차감 후 값을 바꿔준다.</span>
+        <span class="nx">turn_left</span> <span class="o">-=</span><span class="mi">1</span><span class="p">;</span> 
+        <span class="nx">turn_times_element</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">turn_left</span><span class="p">;</span>
+        
+    <span class="p">}</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="8-남은-횟수가-0이-될-때까지-반복-후-양쪽의-점수를-비교해-승자를-정한다"><strong>8. 남은 횟수가 0이 될 때까지 반복 후 양쪽의 점수를 비교해 승자를 정한다.</strong></h2>
+
+<p>턴을 돌리는 것은 지난 글에서 완성했으니 이제 게임이 끝났을 때의 결과를 출력하는 코드를 작성하면 된다. 
+‘남은 횟수가 0이 될 때까지’라는 조건이 붙어있으니 <code class="language-plaintext highlighter-rouge">if 조건문</code>을 사용하면 된다는 것을 알 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">user_shoot</span><span class="p">(</span><span class="nx">user_shootType</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">turn_times_element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">shots_left</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">score_element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">score_user</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">turn</span><span class="o">===</span><span class="dl">'</span><span class="s1">컴퓨터</span><span class="dl">'</span><span class="p">){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">`지금은 </span><span class="p">${</span><span class="nx">turn</span><span class="p">}</span><span class="s2"> 차례입니다.`</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+        <span class="nx">Shoot</span><span class="p">(</span><span class="nx">turn</span><span class="p">,</span><span class="nx">user_shootType</span><span class="p">,</span><span class="nx">score_element</span><span class="p">);</span>
+
+        <span class="nx">turn</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">컴퓨터</span><span class="dl">'</span><span class="p">;</span>
+	
+        <span class="nx">turn_left</span> <span class="o">-=</span><span class="mi">1</span><span class="p">;</span> 
+        <span class="nx">turn_times_element</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">turn_left</span><span class="p">;</span>
+        
+        <span class="c1">//조건문 생성</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">turn_left</span> <span class="o">===</span><span class="mi">0</span><span class="p">){</span>
+        
+        <span class="p">}</span>
+    <span class="p">}</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+<p>작성한 조건문 안에 승자를 판별하는 코드를 작성하면 되는데, 알다시피 게임의 결과는 세 가지로 나뉜다. 사용자가 이겼을 때/사용자가 졌을 때/비겼을 때. 
+그러므로 세가지 조건에 부합하는 각기 다른 결과를 출력하면 된다. 우리는 스코어보드에 명시해주기로 했으므로 id가 <code class="language-plaintext highlighter-rouge">text</code>인 엘리먼트를 이용할 것이다.
+게임이 종료되었다는 말을 기본으로 하고 조건에 따라 결과값을 뒤이어 출력하면 된다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="nx">turn_left</span><span class="o">===</span><span class="mi">0</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">game_result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">게임이 종료되었습니다. </span><span class="dl">'</span><span class="p">;</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">score</span><span class="o">&lt;</span><span class="nx">com</span><span class="p">.</span><span class="nx">score</span><span class="p">)</span>
+         <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span><span class="dl">'</span><span class="s1">컴퓨터가 이겼습니다!</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">score</span><span class="o">&gt;</span><span class="nx">com</span><span class="p">.</span><span class="nx">score</span><span class="p">)</span>
+         <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span><span class="dl">'</span><span class="s1">당신이 이겼습니다!</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">else</span> 
+         <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span><span class="dl">'</span><span class="s1">비겼습니다.</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>여기서 끝이 아니다. 게임이 끝난 후 더는 플레이할 수 없도록 버튼을 비활성화 해주어야 한다. 그러기 위해서는
+<a href="developer.mozilla.org/ko/docs/Web/API/Element/getElementsByClassName"><code class="language-plaintext highlighter-rouge">getElementsByClassName()</code></a>을 사용해야 하는데, 
+<code class="language-plaintext highlighter-rouge">getElementById()</code>와는 달리 엘리먼트가 복수형인 것을 확인할 수 있다. 
+이는 해당 메소드가 같은 클래스 이름을 가진 모든 원소들을 반환하기 때문이다. 설령 원소가 단 하나뿐이더라도 배열의 형태로 저장된다.</p>
+
+<p>존재하는 모든 버튼을 비활성화 할 예정이므로 이는 문제가 되지 않는다. 우선 전역 변수를 만들고 그곳에 버튼들을 저장하겠다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>모든 버튼에 접근할 수 있게 되었다면 비활성화 하는 것만 남았다. 이는 <code class="language-plaintext highlighter-rouge">disable</code> 속성값을 변경함으로써 구현할 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="nx">turn_left</span><span class="o">===</span><span class="mi">0</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">game_result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">게임이 종료되었습니다. </span><span class="dl">'</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">score</span><span class="o">&lt;</span><span class="nx">com</span><span class="p">.</span><span class="nx">score</span><span class="p">)</span>
+         <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span><span class="dl">'</span><span class="s1">컴퓨터가 이겼습니다!</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">score</span><span class="o">&gt;</span><span class="nx">com</span><span class="p">.</span><span class="nx">score</span><span class="p">)</span>
+         <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span><span class="dl">'</span><span class="s1">당신이 이겼습니다!</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">else</span> 
+         <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span><span class="dl">'</span><span class="s1">비겼습니다.</span><span class="dl">'</span><span class="p">;</span>
+         
+    <span class="c1">//버튼의 비활성화</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">button</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+          <span class="nx">button</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하면 게임의 구현은 끝이 난 것처럼 보인다. 그러나 게임의 재미를 북돋기 위해 AI를 추가할 예정이다. 
+단순한 함수로, 사용자와 컴퓨터의 점수 차이가 5를 초과할 경우 각 슛의 확률을 올리거나 내리는 함수이다.</p>
+
+<p>사용자가 큰 차이로 이기고 있으면 컴퓨터의 슛 확률을 높이고 사용자의 슛 확률은 낮춘다. 반대의 경우도 마찬가지다. 다만 다시 점수 차이가 줄었을 때는 원래의 확률로 만들어 주어야 한다. 
+점수 차이가 크게 날 때 2점슛과 3점슛에 서로 같은 확률을 부여한 까닭은 단순히 코드를 조금이라도 줄여보기 위한 것이므로 특별한 의미는 없다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">AI</span><span class="p">(){</span>
+
+    <span class="kd">let</span> <span class="nx">diff</span> <span class="o">=</span> <span class="nx">user</span><span class="p">.</span><span class="nx">score</span><span class="o">-</span><span class="nx">com</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">diff</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">){</span><span class="c1">//사용자가 큰 차이로 이기고 있는 경우</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="nx">com</span><span class="p">[</span><span class="dl">'</span><span class="s1">per_shoot</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">;</span>
+            <span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">per_shoot</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">diff</span><span class="o">&lt;-</span><span class="mi">5</span><span class="p">){</span><span class="c1">//사용자가 큰 차이로 지고 있는 경우</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="nx">com</span><span class="p">[</span><span class="dl">'</span><span class="s1">per_shoot</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span>
+            <span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">per_shoot</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nx">com</span><span class="p">.</span><span class="nx">per_shoot2</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+        <span class="nx">com</span><span class="p">.</span><span class="nx">per_shoot3</span> <span class="o">=</span> <span class="mf">0.33</span><span class="p">;</span> 
+        <span class="nx">user</span><span class="p">.</span><span class="nx">per_shoot2</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+        <span class="nx">user</span><span class="p">.</span><span class="nx">per_shoot3</span> <span class="o">=</span> <span class="mf">0.33</span><span class="p">;</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>AI가 완성되었으면 이 함수를 <code class="language-plaintext highlighter-rouge">Shoot()</code> 함수보다 먼저 실행될 수 있도록 한다. 던진 다음 확률이 바뀌어서야 의미가 없기 때문이다.</p>
+
+<p>따라서, AI 함수까지 적용된 코드의 최종적인 형태는 다음과 같다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">com</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">score</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+    <span class="na">per_shoot2</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="na">per_shoot3</span> <span class="p">:</span> <span class="mf">0.33</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">score</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">per_shoot2</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="na">per_shoot3</span> <span class="p">:</span> <span class="mf">0.33</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">turn</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">컴퓨터</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">turn_left</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">//이때, getElementsByClassName은 리턴값을 배열로 저장한다.</span>
+
+<span class="kd">function</span> <span class="nx">com_shoot</span><span class="p">(){</span>
+    <span class="kd">let</span> <span class="nx">com_shootType</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">&lt;</span><span class="nx">com</span><span class="p">.</span><span class="nx">per_shoot2</span><span class="p">?</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">score_element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">score_computer</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">turn</span><span class="o">===</span><span class="dl">'</span><span class="s1">사용자</span><span class="dl">'</span><span class="p">){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">`지금은 </span><span class="p">${</span><span class="nx">turn</span><span class="p">}</span><span class="s2"> 차례입니다.`</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+        <span class="nx">AI</span><span class="p">();</span> <span class="c1">//점수차에 의한 슛 확률 조정 함수</span>
+        <span class="nx">Shoot</span><span class="p">(</span><span class="nx">turn</span><span class="p">,</span><span class="nx">com_shootType</span><span class="p">,</span><span class="nx">score_element</span><span class="p">);</span>
+
+        <span class="nx">turn</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">사용자</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">user_shoot</span><span class="p">(</span><span class="nx">user_shootType</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">turn_times_element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">shots_left</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">score_element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">score_user</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">turn</span><span class="o">===</span><span class="dl">'</span><span class="s1">컴퓨터</span><span class="dl">'</span><span class="p">){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">`지금은 </span><span class="p">${</span><span class="nx">turn</span><span class="p">}</span><span class="s2"> 차례입니다.`</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+        <span class="nx">AI</span><span class="p">();</span>
+        <span class="nx">Shoot</span><span class="p">(</span><span class="nx">turn</span><span class="p">,</span><span class="nx">user_shootType</span><span class="p">,</span><span class="nx">score_element</span><span class="p">);</span>
+
+        <span class="nx">turn</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">컴퓨터</span><span class="dl">'</span><span class="p">;</span>
+
+        <span class="nx">turn_left</span> <span class="o">-=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="nx">turn_times_element</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">turn_left</span><span class="p">;</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nx">turn_left</span><span class="o">===</span><span class="mi">0</span><span class="p">){</span>
+            <span class="kd">let</span> <span class="nx">game_result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">);</span>
+            
+            <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">게임이 종료되었습니다. </span><span class="dl">'</span><span class="p">;</span>
+        
+            <span class="k">if</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">score</span><span class="o">&lt;</span><span class="nx">com</span><span class="p">.</span><span class="nx">score</span><span class="p">)</span>
+                <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span><span class="dl">'</span><span class="s1">컴퓨터가 이겼습니다!</span><span class="dl">'</span><span class="p">;</span>
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">score</span><span class="o">&gt;</span><span class="nx">com</span><span class="p">.</span><span class="nx">score</span><span class="p">)</span>
+                <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span><span class="dl">'</span><span class="s1">당신이 이겼습니다!</span><span class="dl">'</span><span class="p">;</span>
+            <span class="k">else</span> 
+                <span class="nx">game_result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span><span class="dl">'</span><span class="s1">비겼습니다.</span><span class="dl">'</span><span class="p">;</span>
+        
+            <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">button</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="nx">button</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span> 
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">Shoot</span><span class="p">(</span><span class="nx">now_text</span><span class="p">,</span><span class="nx">Type</span><span class="p">,</span><span class="nx">element</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">now</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">com_text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">com_text</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">user_text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">user_text</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">shoot_result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">now_text</span><span class="o">===</span><span class="dl">'</span><span class="s1">컴퓨터</span><span class="dl">'</span><span class="p">){</span>
+        <span class="nx">now</span> <span class="o">=</span> <span class="nx">com</span><span class="p">;</span>
+        <span class="nx">com_text</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">컴퓨터</span><span class="dl">'</span><span class="p">;</span>
+        <span class="nx">user_text</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">▶사용자</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nx">now</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span>
+        <span class="nx">com_text</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">▶컴퓨터</span><span class="dl">'</span><span class="p">;</span>
+        <span class="nx">user_text</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">사용자</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">successORfail</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">&lt;</span><span class="nx">now</span><span class="p">[</span><span class="dl">'</span><span class="s1">per_shoot</span><span class="dl">'</span><span class="o">+</span><span class="nx">Type</span><span class="p">]?</span><span class="kc">true</span><span class="p">:</span><span class="kc">false</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">successORfail</span><span class="o">===</span><span class="kc">true</span><span class="p">){</span>
+        <span class="nx">now</span><span class="p">.</span><span class="nx">score</span> <span class="o">+=</span> <span class="nx">Type</span><span class="p">;</span>
+        <span class="nx">element</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+        <span class="nx">shoot_result</span><span class="p">.</span><span class="nx">innerHTML</span><span class="o">=</span><span class="s2">`</span><span class="p">${</span><span class="nx">now_text</span><span class="p">}</span><span class="s2"> 이(가) </span><span class="p">${</span><span class="nx">Type</span><span class="p">}</span><span class="s2"> 점슛에 성공하였습니다.`</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nx">shoot_result</span><span class="p">.</span><span class="nx">innerHTML</span><span class="o">=</span><span class="s2">`</span><span class="p">${</span><span class="nx">now_text</span><span class="p">}</span><span class="s2"> 이(가) </span><span class="p">${</span><span class="nx">Type</span><span class="p">}</span><span class="s2"> 점슛에 실패하였습니다.`</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">AI</span><span class="p">(){</span>
+
+    <span class="kd">let</span> <span class="nx">diff</span> <span class="o">=</span> <span class="nx">user</span><span class="p">.</span><span class="nx">score</span><span class="o">-</span><span class="nx">com</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">diff</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">){</span><span class="c1">//사용자가 큰 차이로 이기고 있는 경우</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="nx">com</span><span class="p">[</span><span class="dl">'</span><span class="s1">per_shoot</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">;</span>
+            <span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">per_shoot</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">diff</span><span class="o">&lt;-</span><span class="mi">5</span><span class="p">){</span><span class="c1">//사용자가 큰 차이로 지고 있는 경우</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="nx">com</span><span class="p">[</span><span class="dl">'</span><span class="s1">per_shoot</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span>
+            <span class="nx">user</span><span class="p">[</span><span class="dl">'</span><span class="s1">per_shoot</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nx">com</span><span class="p">.</span><span class="nx">per_shoot2</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+        <span class="nx">com</span><span class="p">.</span><span class="nx">per_shoot3</span> <span class="o">=</span> <span class="mf">0.33</span><span class="p">;</span> 
+        <span class="nx">user</span><span class="p">.</span><span class="nx">per_shoot2</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+        <span class="nx">user</span><span class="p">.</span><span class="nx">per_shoot3</span> <span class="o">=</span> <span class="mf">0.33</span><span class="p">;</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/javascript/2021/01/22/js3.html" title="[javascript] 농구 게임 만들기(1)">[javascript] 농구 게임 만들기(1)</a><a class="next" href="/jekyll-theme-yat/jsp/2021/12/08/jsp1.html" title="[JSP] WEB의 기초">[JSP] WEB의 기초</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/java/2020/04/17/java2.html" title="[JSP] WEB의 기초">[JAVA] 배열</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/22/js4.html" title="[JSP] WEB의 기초">[javascript] 농구 게임 만들기(2)</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%835.html" title="[JSP] WEB의 기초">웹사이트 layout5</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/06/19/ex4.html" title="[JSP] WEB의 기초">exercise: 클래스와 객체</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>27</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-HTML5&amp;CSS3">
+          HTML5&amp;CSS3 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JAVA">
+          JAVA <span>14</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JSP">
+          JSP <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-javascript">
+          javascript <span>4</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 Hwang Sumin</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Contact: hwang.sumin.0313@gmail.com </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[JAVA] 제네릭과 컬렉션 | SUMIN’s BLOG</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="[JAVA] 제네릭과 컬렉션">
+<meta name="author" content="Hwang Sumin">
+<meta property="og:locale" content="ko">
+<meta name="description" content="컬렉션(Collection) 배열은 여러 개의 데이터를 다루는데 편리한 구조이지만 데이터의 크기를 예측할 수 없거나 삽입과 삭제가 빈번한 응용프로그램에서는 사용하기 불편하다. 때문에 가변 크기를 가지고, 자동으로 자리를 옮겨주는 컬렉션은 중요한 구조이다. java.util 패키지는 컬렉션을 위해 아래와 같은 자바 인터페이스와 클래스를 제공한다.">
+<meta property="og:description" content="컬렉션(Collection) 배열은 여러 개의 데이터를 다루는데 편리한 구조이지만 데이터의 크기를 예측할 수 없거나 삽입과 삭제가 빈번한 응용프로그램에서는 사용하기 불편하다. 때문에 가변 크기를 가지고, 자동으로 자리를 옮겨주는 컬렉션은 중요한 구조이다. java.util 패키지는 컬렉션을 위해 아래와 같은 자바 인터페이스와 클래스를 제공한다.">
+<link rel="canonical" href="/jekyll-theme-yat/java/2020/05/31/java11.html">
+<meta property="og:url" content="/jekyll-theme-yat/java/2020/05/31/java11.html">
+<meta property="og:site_name" content="SUMIN’s BLOG">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-31T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="[JAVA] 제네릭과 컬렉션">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Hwang Sumin"},"description":"컬렉션(Collection) 배열은 여러 개의 데이터를 다루는데 편리한 구조이지만 데이터의 크기를 예측할 수 없거나 삽입과 삭제가 빈번한 응용프로그램에서는 사용하기 불편하다. 때문에 가변 크기를 가지고, 자동으로 자리를 옮겨주는 컬렉션은 중요한 구조이다. java.util 패키지는 컬렉션을 위해 아래와 같은 자바 인터페이스와 클래스를 제공한다.","headline":"[JAVA] 제네릭과 컬렉션","dateModified":"2020-05-31T00:00:00+00:00","datePublished":"2020-05-31T00:00:00+00:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/java/2020/05/31/java11.html"},"url":"/jekyll-theme-yat/java/2020/05/31/java11.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="SUMIN's BLOG">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+ <!--<img class="site-favicon" title="SUMIN&#39;s BLOG" src="" onerror="this.style.display='none'">-->
+  <img class="site-favicon" title="HOME" src="" onerror="this.style.display='none'">
+  SUMIN's BLOG
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/menu.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a><a class="page-link" href="/jekyll-theme-yat/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html">PORTFOLIO</a>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+     
+      if (y <= 0) {
+        scrollStatus = "top";
+      }  
+       else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+     
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+      
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">[JAVA] 제네릭과 컬렉션</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <!--
+<p class="post-meta">
+    <time class="dt-published" datetime="2020-05-31T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> May 31, 2020
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 8 mins</span>
+  </p>
+--><div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="컬렉션collection">컬렉션(Collection)</h2>
+
+<p>배열은 여러 개의 데이터를 다루는데 편리한 구조이지만 데이터의 크기를 예측할 수 없거나 삽입과 삭제가 빈번한 응용프로그램에서는 사용하기 불편하다. 때문에 가변 크기를 가지고, 자동으로 자리를 옮겨주는 컬렉션은 중요한 구조이다. <code class="language-plaintext highlighter-rouge">java.util</code> 패키지는 컬렉션을 위해 아래와 같은 자바 인터페이스와 클래스를 제공한다.</p>
+
+<p><img src="/assets/images/JavaImages/95.png" alt="image1"></p>
+
+<p>컬렉션은 <strong>제네릭(generics)</strong> 이라는 기법으로 구현된다. 이는 특정 타입만 다루지 않고 여러 종류의 타입으로 변신할 수 있도록 클래스나 메소드를 일반화시키는 기법이다. 위 그림에서처럼 <code class="language-plaintext highlighter-rouge">&lt;E&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;K&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;V&gt;</code> 등이 컬렉션 클래스 이름에 반드시 포함된다. 
+가령, 제네릭 스택 <code class="language-plaintext highlighter-rouge">Stack&lt;E&gt;</code>가 있다고 할 때 <code class="language-plaintext highlighter-rouge">E</code>는 특정 타입으로 구체화될 수 있고 정수만 다루는 스택일 경우 <code class="language-plaintext highlighter-rouge">Stack&lt;Integer&gt;</code>, 문자열만 다루는 스택일 경우 <code class="language-plaintext highlighter-rouge">Stack&lt;String&gt;</code> 으로 표기된다. 
+컬렉션은 여러 타입의 값을 다룰 수 있도록 변신이 가능한 자료 구조이지만, 사용할 때는 지정된 특정 타입의 값만 저장 가능하다. 또한 객체만 요소로 삼을 수 있으므로 <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">char</code>, <code class="language-plaintext highlighter-rouge">double</code> 등 기본 타입의 데이터는 컬렉션의 요소가 될 수 없다.</p>
+
+<h2 id="vectore">Vector&lt;E&gt;</h2>
+
+<p>배열을 가변 크기로 다룰 수 있게 하고 객체의 삽입, 삭제, 이동이 쉽도록 구성한 컬렉션 클래스이다. 삽입되는 요소의 개수에 따라 자동으로 크기를 조절하며 삽입, 삭제시 자동으로 요소들이 자리를 이동한다.
+앞서 말했듯 <code class="language-plaintext highlighter-rouge">E</code>에는 기본 타입이 들어갈 수 없으며 정수 값을 삽입할 벡터를 만들고자 하면 <code class="language-plaintext highlighter-rouge">Integer</code>를 지정해야 한다. 괄호 안에는 초기 크기를 지정하는데, 정하지 않으면 자동으로 10이 할당된다.</p>
+
+<p><img src="/assets/images/JavaImages/96.png" alt="image2"></p>
+
+<p>해당 클래스의 주요 메소드는 다음과 같다.</p>
+
+<p><img src="/assets/images/JavaImages/97.png" alt="image3"></p>
+
+<p>각 메소드를 호출 시 어떻게 동작하는지 살펴보자.</p>
+
+<p><img src="/assets/images/JavaImages/98.png" alt="image4"></p>
+
+<p>위는 특정 타입의 변수만 다루는 컬렉션을 활용하는 예시다. 그러나 클래스를 만들어 해당 클래스의 객체만 다루는 벡터를 작성할 수도 있다. 아래는 점 (x , y)를 표현하는 <code class="language-plaintext highlighter-rouge">Point</code> 클래스를 만들고 그 객체만 다루는 벡터를 나타낸 코드이다.</p>
+
+<p><img src="/assets/images/JavaImages/99.png" alt="image5"></p>
+
+<h2 id="arrayliste">ArrayList&lt;E&gt;</h2>
+
+<p>가변 크기 배열을 구현한 클래스로 객체 또는 <code class="language-plaintext highlighter-rouge">null</code>을 삽입할 수 있고 기본 타입은 박싱(객체화)을 통해 <code class="language-plaintext highlighter-rouge">Wrapper</code> 객체로 만들어 저장한다. <code class="language-plaintext highlighter-rouge">Vector&lt;E&gt;</code>와 다른 점이라면 동기화되지 않는다는 것이다.
+따라서 다수 스레드가 동시에 <code class="language-plaintext highlighter-rouge">ArrayList</code>에 접근할 때 데이터가 훼손될 우려가 있다. 다만 <code class="language-plaintext highlighter-rouge">Vector</code>보다 속도가 빨라 단일 스레스 응용에는 더 효과적이다.</p>
+
+<p><img src="/assets/images/JavaImages/100.png" alt="image6"></p>
+
+<p>아래는 <code class="language-plaintext highlighter-rouge">ArrayList&lt;E&gt;</code>의 주요 메소드이다.</p>
+
+<p><img src="/assets/images/JavaImages/101.png" alt="image7"></p>
+
+<h2 id="iteratore">Iterator&lt;E&gt;</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Iterator&lt;E&gt;</code>는 <code class="language-plaintext highlighter-rouge">Vector&lt;E&gt;</code>, <code class="language-plaintext highlighter-rouge">ArrayList&lt;E&gt;</code>, <code class="language-plaintext highlighter-rouge">LinkedList&lt;E&gt;</code> 가 상속받는 인터페이스로 리스트 구조의 컬렉션에서 요소의 순차 검색을 위한 메소드를 포함한다. <strong>인덱스 번호 없이 순차 검색이 가능</strong>하다는 장점이 있다.</p>
+
+<p><img src="/assets/images/JavaImages/102.png" alt="image8"></p>
+
+<p><code class="language-plaintext highlighter-rouge">Iterator&lt;E&gt;</code> 를 사용하기 위해서는 <code class="language-plaintext highlighter-rouge">Iterator</code> 객체를 얻어내야 한다. 이때, 해당 컬렉션의 요소 타입과 동일한 타입을 가져야한다.</p>
+
+<p><img src="/assets/images/JavaImages/103.png" alt="image9"></p>
+
+<h2 id="hashmapkv">HashMap&lt;K,V&gt;</h2>
+
+<p>키와 값의 쌍으로 구성되는 요소를 다루는 컬렉션으로 <code class="language-plaintext highlighter-rouge">K(key)</code>는 키로 사용할 요소의 타입, <code class="language-plaintext highlighter-rouge">V(value)</code>는 값으로 사용할 요소의 타입이다. 키와 값은 항상 쌍을 이루어야 하며, 키는 <code class="language-plaintext highlighter-rouge">HashMap&lt;K,V&gt;</code>에 삽입되는 위치 결정 및 값을 검색하기 위한 용도로 사용된다. 삽입, 삭제, 검색이 빠른 것이 특징이다. 
+다음과 같이 <code class="language-plaintext highlighter-rouge">put()</code> 메소드로 요소를 삽입하고 <code class="language-plaintext highlighter-rouge">get()</code> 메소드로 요소를 검색한다.</p>
+
+<p><img src="/assets/images/JavaImages/104.png" alt="image10"></p>
+
+<p>컬렉션을 생성하면 다음과 같은 과정을 통해 삽입과 출력이 이루어진다.</p>
+
+<p><img src="/assets/images/JavaImages/105.png" alt="image11"></p>
+
+<p>다음은 <code class="language-plaintext highlighter-rouge">HashMap&lt;K,V&gt;</code> 의 주요 메소드이다.</p>
+
+<p><img src="/assets/images/JavaImages/106.png" alt="image12"></p>
+
+<h2 id="linkedliste">LinkedList&lt;E&gt;</h2>
+
+<p><code class="language-plaintext highlighter-rouge">List</code> 인터페이스를 구현한 컬렉션 클래스로 <code class="language-plaintext highlighter-rouge">Vector&lt;E&gt;</code>, <code class="language-plaintext highlighter-rouge">ArrayList&lt;E&gt;</code> 클래스와 유사하게 작된한다. 요소 객체들은 양방향으로 연결되어 관리되고 맨 앞, 맨 뒤에 요소를 추가 가능하며 인덱스를 이용하면 중간에도 삽입 할 수 있다. 
+ 대체로 스택이나 큐로 사용한다. <code class="language-plaintext highlighter-rouge">HashMap&lt;K,V&gt;</code> 처럼 <code class="language-plaintext highlighter-rouge">put()</code> 과 <code class="language-plaintext highlighter-rouge">get()</code> 메소드로 요소를 삽입 삭제한다.</p>
+
+<p>앞서 <code class="language-plaintext highlighter-rouge">Iterator&lt;E&gt;</code>를 통해 순차 탐색을 구현한 바 있다. <code class="language-plaintext highlighter-rouge">LinkedList&lt;E&gt;</code>는 <code class="language-plaintext highlighter-rouge">Iterator&lt;E&gt;</code> 와 달리 <strong>양방향 탐색</strong>이 가능하다는 것이 특징이다. 내부 구성 및 작동 원리는 다음과 같다.</p>
+
+<p><img src="/assets/images/JavaImages/107.png" alt="image13"></p>
+
+<h2 id="collections-클래스">Collections 클래스</h2>
+
+<p>컬렉션에 대한 연산을 수행하고 결과로 컬렉션을 리턴하는 클래스이다. 모든 메소드는 <code class="language-plaintext highlighter-rouge">static</code> 타입이며 주요 메소드에는 컬렉션에 포함된 요소들을 정렬하는 <code class="language-plaintext highlighter-rouge">sort()</code> 메소드, 
+ 요소의 순서를 반대로 바꾸는 <code class="language-plaintext highlighter-rouge">reverse()</code> 메소드, 요소들의 최대값과 최소값을 찾아내는 <code class="language-plaintext highlighter-rouge">max()</code>, <code class="language-plaintext highlighter-rouge">min()</code> 메소드, 특정 값을 검색하는 <code class="language-plaintext highlighter-rouge">binarySearch()</code> 메소드가 있다.</p>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/java/2020/05/21/java10.html" title="[JAVA] 추상클래스와 인터페이스">[JAVA] 추상클래스와 인터페이스</a><a class="next" href="/jekyll-theme-yat/java/2020/06/19/ex4.html" title="exercise: 클래스와 객체">exercise: 클래스와 객체</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/java/2020/04/06/java1.html" title="exercise: 클래스와 객체">[JAVA] 기본 구조 및 데이터 타입</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/06/30/ex7.html" title="exercise: 클래스와 객체">exercise: 제네릭과 컬렉션</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/05/15/java9.html" title="exercise: 클래스와 객체">[JAVA] 메소드 오버라이딩</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/05/05/java8.html" title="exercise: 클래스와 객체">[JAVA] 상속</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>27</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-HTML5&amp;CSS3">
+          HTML5&amp;CSS3 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JAVA">
+          JAVA <span>14</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JSP">
+          JSP <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-javascript">
+          javascript <span>4</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 Hwang Sumin</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Contact: hwang.sumin.0313@gmail.com </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

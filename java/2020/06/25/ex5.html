@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>exercise:상속 | SUMIN’s BLOG</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="exercise:상속">
+<meta name="author" content="Hwang Sumin">
+<meta property="og:locale" content="ko">
+<meta name="description" content="실습문제 5 문제 1번 다음 TV 클래스가 있다.">
+<meta property="og:description" content="실습문제 5 문제 1번 다음 TV 클래스가 있다.">
+<link rel="canonical" href="/jekyll-theme-yat/java/2020/06/25/ex5.html">
+<meta property="og:url" content="/jekyll-theme-yat/java/2020/06/25/ex5.html">
+<meta property="og:site_name" content="SUMIN’s BLOG">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-06-25T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="exercise:상속">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Hwang Sumin"},"description":"실습문제 5 문제 1번 다음 TV 클래스가 있다.","headline":"exercise:상속","dateModified":"2020-06-25T00:00:00+00:00","datePublished":"2020-06-25T00:00:00+00:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/java/2020/06/25/ex5.html"},"url":"/jekyll-theme-yat/java/2020/06/25/ex5.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="SUMIN's BLOG">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+ <!--<img class="site-favicon" title="SUMIN&#39;s BLOG" src="" onerror="this.style.display='none'">-->
+  <img class="site-favicon" title="HOME" src="" onerror="this.style.display='none'">
+  SUMIN's BLOG
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/menu.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a><a class="page-link" href="/jekyll-theme-yat/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html">PORTFOLIO</a>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+     
+      if (y <= 0) {
+        scrollStatus = "top";
+      }  
+       else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+     
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+      
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">exercise:상속</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <!--
+<p class="post-meta">
+    <time class="dt-published" datetime="2020-06-25T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jun 25, 2020
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 40 mins</span>
+  </p>
+--><div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="실습문제-5">실습문제 5</h2>
+
+<h3 id="문제-1번">문제 1번</h3>
+<p>다음 <code class="language-plaintext highlighter-rouge">TV</code> 클래스가 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class TV{
+   private int size;
+   public TV(int size) { this.size = size; }
+   protected int getSize() { return size; }
+}
+</code></pre></div></div>
+
+<p>다음 <code class="language-plaintext highlighter-rouge">main()</code> 메소드와 실행 결과를 참고하여 <code class="language-plaintext highlighter-rouge">TV</code>를 상속받은 <code class="language-plaintext highlighter-rouge">ColorTV</code> 클래스를 작성하라.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static void main(String[] args) {
+   ColorTV myTV = new ColorTV(32, 1024);
+   myTV.printProperty();
+}
+
+예시)
+  32인치 1024컬러
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">class</span> <span class="nc">TV</span><span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span>
+   <span class="kd">public</span> <span class="nf">TV</span><span class="o">(</span><span class="kt">int</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">size</span> <span class="o">=</span> <span class="n">size</span><span class="o">;</span> <span class="o">}</span>
+   <span class="kd">protected</span> <span class="kt">int</span> <span class="nf">getSize</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">size</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ColorTV</span> <span class="kd">extends</span> <span class="no">TV</span><span class="o">{</span>
+	
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">color</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="nf">ColorTV</span><span class="o">(</span><span class="kt">int</span> <span class="n">size</span><span class="o">,</span> <span class="kt">int</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">size</span><span class="o">);</span> <span class="c1">//서브 클래스의 생성자 가장 첫 줄에 슈퍼 클래스 생성자 만들기</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;</span> 
+	<span class="o">}</span>
+	<span class="kd">protected</span> <span class="kt">int</span> <span class="nf">getColor</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">color</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kt">void</span> <span class="nf">printProperty</span><span class="o">(){</span>
+	   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="kd">super</span><span class="o">.</span><span class="na">getSize</span><span class="o">()+</span><span class="s">"인치 "</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">color</span><span class="o">+</span><span class="s">"컬러"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">exercise1</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		 <span class="nc">ColorTV</span> <span class="n">myTV</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorTV</span><span class="o">(</span><span class="mi">32</span><span class="o">,</span> <span class="mi">1024</span><span class="o">);</span>
+		 <span class="n">myTV</span><span class="o">.</span><span class="na">printProperty</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-1-2번">문제 1-2번</h3>
+
+<p>다음 <code class="language-plaintext highlighter-rouge">main()</code> 메소드와 실행 결과를 참고하여 <code class="language-plaintext highlighter-rouge">ColorTV</code>를 상속받는 <code class="language-plaintext highlighter-rouge">IPTV</code> 클래스를 작성하라.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">IPTV</span> <span class="kd">extends</span> <span class="nc">ColorTV</span><span class="o">{</span>
+	
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="nf">IPTV</span><span class="o">(</span><span class="nc">String</span> <span class="n">address</span><span class="o">,</span> <span class="kt">int</span> <span class="n">size</span><span class="o">,</span> <span class="kt">int</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">size</span><span class="o">,</span><span class="n">color</span><span class="o">);</span><span class="c1">//서브 클래스의 생성자 가장 첫 줄에 슈퍼 클래스 생성자 만들기</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">address</span> <span class="o">=</span> <span class="n">address</span><span class="o">;</span> 
+	<span class="o">}</span>
+
+	<span class="kt">void</span> <span class="nf">printProperty</span><span class="o">(){</span>
+	   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"나의 IPTV는"</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">address</span><span class="o">+</span><span class="s">"주소의 "</span><span class="o">+</span><span class="kd">super</span><span class="o">.</span><span class="na">getSize</span><span class="o">()+</span><span class="s">"인치 "</span><span class="o">+</span><span class="kd">super</span><span class="o">.</span><span class="na">getColor</span><span class="o">()+</span><span class="s">"컬러"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">exercise2</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="no">IPTV</span> <span class="n">iptv</span> <span class="o">=</span> <span class="k">new</span> <span class="no">IPTV</span><span class="o">(</span><span class="s">"192.1.1.2"</span><span class="o">,</span> <span class="mi">32</span><span class="o">,</span> <span class="mi">2048</span><span class="o">);</span> <span class="c1">//"192.1.1.2" 주소에 32인치, 2048컬러</span>
+		<span class="n">iptv</span><span class="o">.</span><span class="na">printProperty</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-2번">문제 2번</h3>
+
+<p>다음은 단위를 변환하는 추상 클래스 <code class="language-plaintext highlighter-rouge">Converter</code>이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Converter</span> <span class="o">{</span>
+   <span class="kd">abstract</span> <span class="kd">protected</span> <span class="kt">double</span> <span class="nf">convert</span><span class="o">(</span><span class="kt">double</span> <span class="n">src</span><span class="o">);</span> <span class="c1">// 추상 메소드</span>
+   <span class="kd">abstract</span> <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getSrcString</span><span class="o">();</span> <span class="c1">// 추상 메소드</span>
+   <span class="kd">abstract</span> <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getDestString</span><span class="o">();</span> <span class="c1">// 추상 메소드</span>
+   <span class="kd">protected</span> <span class="kt">double</span> <span class="n">ratio</span><span class="o">;</span> <span class="c1">// 비율</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getSrcString</span><span class="o">()+</span><span class="s">"을 "</span><span class="o">+</span><span class="n">getDestString</span><span class="o">()+</span><span class="s">"로 바꿉니다."</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">getSrcString</span><span class="o">()+</span><span class="s">"을 입력하세요&gt;&gt; "</span><span class="o">);</span>
+      <span class="kt">double</span> <span class="n">val</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
+      <span class="kt">double</span> <span class="n">res</span> <span class="o">=</span> <span class="n">convert</span><span class="o">(</span><span class="n">val</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"변환 결과: "</span><span class="o">+</span><span class="n">res</span><span class="o">+</span><span class="n">getDestString</span><span class="o">()+</span><span class="s">"입니다"</span><span class="o">);</span>
+      <span class="n">scanner</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Converter</code> 클래스를 상속받아 원화를 달러로 변환하는 <code class="language-plaintext highlighter-rouge">Won2Dollar</code> 클래스를 작성하라. <code class="language-plaintext highlighter-rouge">main()</code> 메소드와 실행 결과는 다음과 같다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static void main(String args[]) {
+   Won2Dollar toDollar = new Won2Dollar(1200); // 1달러는 1200원
+   toDollar.run();
+}
+
+예시)
+  원을 달러로 바꿉니다.
+  원을 입력하세요&gt;&gt; 24000
+  변환 결과: 20.0달러입니다
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Converter</span> <span class="o">{</span>
+   <span class="kd">abstract</span> <span class="kd">protected</span> <span class="kt">double</span> <span class="nf">convert</span><span class="o">(</span><span class="kt">double</span> <span class="n">src</span><span class="o">);</span> <span class="c1">// 추상 메소드</span>
+   <span class="kd">abstract</span> <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getSrcString</span><span class="o">();</span> <span class="c1">// 추상 메소드</span>
+   <span class="kd">abstract</span> <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getDestString</span><span class="o">();</span> <span class="c1">// 추상 메소드</span>
+   <span class="kd">protected</span> <span class="kt">double</span> <span class="n">ratio</span><span class="o">;</span> <span class="c1">// 비율</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getSrcString</span><span class="o">()+</span><span class="s">"을 "</span><span class="o">+</span><span class="n">getDestString</span><span class="o">()+</span><span class="s">"로 바꿉니다."</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">getSrcString</span><span class="o">()+</span><span class="s">"을 입력하세요&gt;&gt; "</span><span class="o">);</span>
+      <span class="kt">double</span> <span class="n">val</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
+      <span class="kt">double</span> <span class="n">res</span> <span class="o">=</span> <span class="n">convert</span><span class="o">(</span><span class="n">val</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"변환 결과: "</span><span class="o">+</span><span class="n">res</span><span class="o">+</span><span class="n">getDestString</span><span class="o">()+</span><span class="s">"입니다"</span><span class="o">);</span>
+      <span class="n">scanner</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">exercise3</span> <span class="kd">extends</span> <span class="nc">Converter</span><span class="o">{</span>
+	
+	<span class="n">exercise3</span><span class="o">(</span><span class="kt">double</span> <span class="n">ratio</span><span class="o">){</span><span class="k">this</span><span class="o">.</span><span class="na">ratio</span> <span class="o">=</span> <span class="n">ratio</span><span class="o">;}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">double</span> <span class="nf">convert</span><span class="o">(</span><span class="kt">double</span> <span class="n">src</span><span class="o">)</span> <span class="o">{</span><span class="k">return</span> <span class="n">src</span><span class="o">/</span><span class="kd">super</span><span class="o">.</span><span class="na">ratio</span><span class="o">;}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getSrcString</span><span class="o">(){</span><span class="k">return</span> <span class="s">"원"</span><span class="o">;}</span><span class="c1">//어떤 단위를 입력받을 것인지</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getDestString</span><span class="o">(){</span><span class="k">return</span> <span class="s">"달러"</span><span class="o">;}</span><span class="c1">//어떤 단위로 변환할 것인지</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">exercise3</span> <span class="n">toDollar</span> <span class="o">=</span> <span class="k">new</span> <span class="n">exercise3</span><span class="o">(</span><span class="mi">1200</span><span class="o">);</span> <span class="c1">// 1달러는 1200원</span>
+		<span class="n">toDollar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-2-2번">문제 2-2번</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Converter</code> 클래스를 상속받아 Km를 mile(마일)로 변환하는 <code class="language-plaintext highlighter-rouge">Km2Mile</code> 클래스를 작성하라, <code class="language-plaintext highlighter-rouge">main()</code> 메소드와 실행 결과는 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+   <span class="nc">Km2Mile</span> <span class="n">toMile</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Km2Mile</span><span class="o">(</span><span class="mf">1.6</span><span class="o">);</span> <span class="c1">// 1마일은 1.6km</span>
+   <span class="n">toMile</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+  Km을 mile로 바꿉니다.
+  Km을 입력하세요&gt;&gt; 30
+  변환 결과: 18.75mile입니다
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">exercise4</span> <span class="kd">extends</span> <span class="nc">Converter</span><span class="o">{</span>
+	
+	<span class="n">exercise4</span><span class="o">(</span><span class="kt">double</span> <span class="n">ratio</span><span class="o">){</span><span class="k">this</span><span class="o">.</span><span class="na">ratio</span> <span class="o">=</span> <span class="n">ratio</span><span class="o">;}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">double</span> <span class="nf">convert</span><span class="o">(</span><span class="kt">double</span> <span class="n">src</span><span class="o">)</span> <span class="o">{</span><span class="k">return</span> <span class="n">src</span><span class="o">/</span><span class="kd">super</span><span class="o">.</span><span class="na">ratio</span><span class="o">;}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getSrcString</span><span class="o">(){</span><span class="k">return</span> <span class="s">"km"</span><span class="o">;}</span><span class="c1">//어떤 단위를 입력받을 것인지</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getDestString</span><span class="o">(){</span><span class="k">return</span> <span class="s">"mile"</span><span class="o">;}</span><span class="c1">//어떤 단위로 변환할 것인지</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">exercise4</span> <span class="n">toMile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">exercise4</span><span class="o">(</span><span class="mf">1.6</span><span class="o">);</span> <span class="c1">// 1마일은 1.6km</span>
+		<span class="n">toMile</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-3번">문제 3번</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Point</code>를 상속받아 색을 가진 점을 나타내는 <code class="language-plaintext highlighter-rouge">ColorPoint</code> 클래스를 작성하라. 다음 <code class="language-plaintext highlighter-rouge">main()</code> 메소드를 포함하고 실행 결과와 같이 출력되게 하라.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+   <span class="nc">ColorPoint</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="s">"YELLOW"</span><span class="o">);</span>
+   <span class="n">cp</span><span class="o">.</span><span class="na">setXY</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
+   <span class="n">cp</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="s">"RED"</span><span class="o">);</span>
+   <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">+</span><span class="s">"입니다. "</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+  RED색의 (10,20)의 점입니다. 
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Point</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
+   <span class="kd">public</span> <span class="nf">Point</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span> <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getX</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">x</span><span class="o">;</span> <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getY</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">y</span><span class="o">;</span> <span class="o">}</span>
+   <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span><span class="n">x</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">exercise5</span> <span class="kd">extends</span> <span class="nc">Point</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">color</span><span class="o">;</span>
+	<span class="n">exercise5</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="nc">String</span> <span class="n">color</span><span class="o">){</span><span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">);</span> <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;}</span>
+	<span class="kt">void</span> <span class="nf">setXY</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){</span><span class="n">move</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">);}</span>
+	<span class="kt">void</span> <span class="nf">setColor</span><span class="o">(</span><span class="nc">String</span> <span class="n">color</span><span class="o">){</span><span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span><span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">color</span><span class="o">+</span><span class="s">"색의 ("</span><span class="o">+</span><span class="n">getX</span><span class="o">()+</span><span class="s">","</span><span class="o">+</span><span class="n">getY</span><span class="o">()+</span><span class="s">")의 점"</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">exercise5</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">exercise5</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="s">"YELLOW"</span><span class="o">);</span>
+		<span class="n">cp</span><span class="o">.</span><span class="na">setXY</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
+		<span class="n">cp</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="s">"RED"</span><span class="o">);</span>
+		<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">+</span><span class="s">"입니다. "</span><span class="o">);</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-4번">문제 4번</h3>
+<p><code class="language-plaintext highlighter-rouge">Point</code>를 상속받아 색을 가진 점을 나타내는 ColorPoint 클래스를 작성하라. 다음 main() 메소드를 포함하고 실행 결과와 같이 출력되게 하라.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+   <span class="nc">ColorPoint</span> <span class="n">zeroPoint</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">();</span> <span class="c1">// (0,0) 위치의 BLACK 색 점</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">zeroPoint</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">);</span>
+   <span class="nc">ColorPoint</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span> <span class="c1">// (10,10) 위치의 BLACK 색 점</span>
+   <span class="n">cp</span><span class="o">.</span><span class="na">setXY</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span><span class="mi">5</span><span class="o">);</span>
+   <span class="n">cp</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="s">"RED"</span><span class="o">);</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cp</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+  BLACK색의 (0,0) 점입니다.
+  RED색의 (5,5) 점입니다.
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.Point</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">exercise6</span> <span class="kd">extends</span> <span class="nc">Point</span> <span class="o">{</span>
+
+	<span class="nc">String</span> <span class="n">color</span> <span class="o">=</span> <span class="s">"BLACK"</span><span class="o">;</span>
+	<span class="n">exercise6</span><span class="o">(){</span><span class="kd">super</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">);}</span>
+	<span class="n">exercise6</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){</span><span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">);}</span>
+	<span class="kt">void</span> <span class="nf">setXY</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){</span><span class="n">move</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">);}</span>
+	<span class="kt">void</span> <span class="nf">setColor</span><span class="o">(</span><span class="nc">String</span> <span class="n">color</span><span class="o">){</span><span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span><span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">color</span><span class="o">+</span><span class="s">"색의 ("</span><span class="o">+</span><span class="n">getX</span><span class="o">()+</span><span class="s">","</span><span class="o">+</span><span class="n">getY</span><span class="o">()+</span><span class="s">")의 점"</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">exercise6</span> <span class="n">zeroPoint</span> <span class="o">=</span> <span class="k">new</span> <span class="n">exercise6</span><span class="o">();</span> <span class="c1">// (0,0) 위치의 BLACK 색 점</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">zeroPoint</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">);</span>
+		<span class="n">exercise6</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">exercise6</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span> <span class="c1">// (10,10) 위치의 BLACK 색 점</span>
+		<span class="n">cp</span><span class="o">.</span><span class="na">setXY</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+		<span class="n">cp</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="s">"RED"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cp</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다. "</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-5번">문제 5번</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Point</code>를 상속받아 3차원의 점을 나타내는 <code class="language-plaintext highlighter-rouge">Point3D</code> 클래스를 작성하라. 다음 <code class="language-plaintext highlighter-rouge">main()</code> 메소드를 포함하고 실행 결과와 같이 출력되게 하라.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+   <span class="nc">Point3D</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point3D</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">);</span> <span class="c1">// 1,2,3은 각각 x, y, z축의 값.</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+   <span class="n">p</span><span class="o">.</span><span class="na">moveUp</span><span class="o">();</span> <span class="c1">// z 축으로 위쪽 이동</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+   <span class="n">p</span><span class="o">.</span><span class="na">moveDown</span><span class="o">();</span> <span class="c1">// z 축으로 아래쪽 이동</span>
+   <span class="n">p</span><span class="o">.</span><span class="na">move</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span> <span class="c1">// x, y 축으로 이동</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+   <span class="n">p</span><span class="o">.</span><span class="na">move</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span>  <span class="mi">200</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span> <span class="c1">// x, y, z축으로 이동</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+  (1,2,3) 의 점입니다.
+  (1,2,4) 의 점입니다.
+  (10,10,3) 의 점입니다.
+  (100,200,300) 의 점입니다.
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.Point</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">exercise7</span> <span class="kd">extends</span> <span class="nc">Point</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">z</span><span class="o">;</span>
+
+	<span class="n">exercise7</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span> <span class="n">z</span><span class="o">){</span><span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">);</span> <span class="k">this</span><span class="o">.</span><span class="na">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">;}</span>
+	<span class="kt">void</span> <span class="nf">move</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span> <span class="n">z</span><span class="o">){</span>
+		<span class="kd">super</span><span class="o">.</span><span class="na">move</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kt">void</span> <span class="nf">moveUp</span><span class="o">(){</span><span class="k">this</span><span class="o">.</span><span class="na">z</span> <span class="o">+=</span><span class="mi">1</span><span class="o">;}</span>
+	<span class="kt">void</span> <span class="nf">moveDown</span><span class="o">(){</span><span class="k">this</span><span class="o">.</span><span class="na">z</span> <span class="o">-=</span><span class="mi">1</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span><span class="k">return</span> <span class="s">"("</span><span class="o">+</span><span class="n">getX</span><span class="o">()+</span><span class="s">","</span><span class="o">+</span><span class="n">getY</span><span class="o">()+</span><span class="s">","</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">z</span><span class="o">+</span><span class="s">")의 점"</span><span class="o">;}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">exercise7</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">exercise7</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">);</span> <span class="c1">// 1,2,3은 각각 x, y, z축의 값.</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+		<span class="n">p</span><span class="o">.</span><span class="na">moveUp</span><span class="o">();</span> <span class="c1">// z 축으로 위쪽 이동</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+		<span class="n">p</span><span class="o">.</span><span class="na">moveDown</span><span class="o">();</span> <span class="c1">// z 축으로 아래쪽 이동</span>
+		<span class="n">p</span><span class="o">.</span><span class="na">move</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span> <span class="c1">// x, y 축으로 이동</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+		<span class="n">p</span><span class="o">.</span><span class="na">move</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span> <span class="c1">// x, y, z축으로 이동</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-6번">문제 6번</h3>
+<p><code class="language-plaintext highlighter-rouge">Point</code>를 상속받아 양수의 공간에서만 점을 나타내는 <code class="language-plaintext highlighter-rouge">PositivePoint</code> 클래스를 작성하라. 다음 <code class="language-plaintext highlighter-rouge">main()</code> 메소드를 포함하고 실행 결과와 같이 출력되게 하라.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+   <span class="nc">PositivePoint</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PositivePoitn</span><span class="o">();</span>
+   <span class="n">p</span><span class="o">.</span><span class="na">move</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+   <span class="n">p</span><span class="o">.</span><span class="na">move</span><span class="o">(-</span><span class="mi">5</span><span class="o">,</span><span class="mi">5</span><span class="o">);</span> <span class="c1">// 객체 p는 음수 공간으로 이동되지 않음</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toStrgin</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+   <span class="nc">PositivePoint</span> <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PositivePoint</span><span class="o">(-</span><span class="mi">10</span><span class="o">,</span> <span class="o">-</span><span class="mi">10</span><span class="o">);</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+  (10,10)의 점입니다.
+  (10,10)의 점입니다.
+  (0,0)의 점입니다.
+
+[Hint] `Point` 클래스의 `move()`를 `PositivePoint` 클래스에서 오버라이딩하여 재작성하고 적절히 `super.move()`를 호출해야 한다. 
+`PositivePoint의` 2개의 생성자에서도 적절히 `super()` 생성자와 `super.move()`를 호출해야 한다.
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.Point</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">exercise8</span> <span class="kd">extends</span> <span class="nc">Point</span> <span class="o">{</span>
+
+	<span class="n">exercise8</span><span class="o">(){</span><span class="kd">super</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">);}</span>
+	<span class="n">exercise8</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">);</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">y</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">)</span>
+			<span class="kd">super</span><span class="o">.</span><span class="na">move</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">y</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">)</span> 
+			<span class="kd">super</span><span class="o">.</span><span class="na">move</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span><span class="k">return</span> <span class="s">"("</span><span class="o">+</span><span class="n">getX</span><span class="o">()+</span><span class="s">","</span><span class="o">+</span><span class="n">getY</span><span class="o">()+</span><span class="s">")의 점"</span><span class="o">;}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">exercise8</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">exercise8</span><span class="o">();</span>
+		<span class="n">p</span><span class="o">.</span><span class="na">move</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+		<span class="n">p</span><span class="o">.</span><span class="na">move</span><span class="o">(-</span><span class="mi">5</span><span class="o">,</span><span class="mi">5</span><span class="o">);</span> <span class="c1">// 객체 p는 음수 공간으로 이동되지 않음</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+		<span class="n">exercise8</span> <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">exercise8</span><span class="o">(-</span><span class="mi">10</span><span class="o">,</span> <span class="o">-</span><span class="mi">10</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"입니다."</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="7번">7번</h3>
+
+<p>다음 <code class="language-plaintext highlighter-rouge">Stack</code> 인터페이스를 상속받아 실수를 저장하는 <code class="language-plaintext highlighter-rouge">StringStack</code> 클래스를 구현하라.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Stack</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="nf">length</span><span class="o">();</span> <span class="c1">// 현재 스택에 저장된 개수 리턴</span>
+   <span class="kt">int</span> <span class="nf">capacity</span><span class="o">();</span> <span class="c1">// 스택의 전체 저장 가능한 개수 리턴</span>
+   <span class="nc">String</span> <span class="nf">pop</span><span class="o">();</span> <span class="c1">// 스택의 톱(top)에 실수 저장</span>
+   <span class="kt">boolean</span> <span class="nf">push</span><span class="o">(</span><span class="nc">String</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 스택의 톱(top)에 저장된 실수 리턴</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>그리고 다음 실행 사례와 같이 작동하도록 <code class="language-plaintext highlighter-rouge">StackApp</code> 클래스에 <code class="language-plaintext highlighter-rouge">main()</code> 메소드를 작성하라.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+  총 스택 저장 공간의 크기 입력 &gt;&gt; 3
+  문자열 입력 &gt;&gt; hello
+  문자열 입력 &gt;&gt; sunny
+  문자열 입력 &gt;&gt; smile
+  문자열 입력 &gt;&gt; happy
+  스택이 꽉 차서 푸시 불가!
+  문자열 입력 &gt;&gt; 그만
+  스택에 저장된 모든 문자열 팝 : smile sunny hello 
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">StringStack</span> <span class="kd">implements</span> <span class="nc">Stack</span><span class="o">{</span>
+	
+	<span class="kd">private</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">element</span><span class="o">;</span> <span class="c1">// 스택의 저장 메모리</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">tos</span><span class="o">;</span> <span class="c1">// index, top of stack</span>
+	
+	<span class="kd">public</span> <span class="nf">StringStack</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">element</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">capacity</span><span class="o">];</span>
+		<span class="n">tos</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// Stack 인터페이스에 선언된 다음 3개의 메소드 오버라이딩 구현</span>
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">length</span><span class="o">()</span> <span class="o">{</span> <span class="c1">// 현재 스택에 저장된 개수 리턴</span>
+		<span class="k">return</span> <span class="n">tos</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">capacity</span><span class="o">()</span> <span class="o">{</span> <span class="c1">// 현재 스택에 저장된 개수 리턴</span>
+		<span class="k">return</span> <span class="n">element</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">pop</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">tos</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="c1">// 스택이 비었음</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">element</span><span class="o">[</span><span class="n">tos</span><span class="o">];</span> <span class="c1">// 톱에 있는 값</span>
+		<span class="n">tos</span><span class="o">--;</span> <span class="c1">// 스택 포인터 감소</span>
+		<span class="k">return</span> <span class="n">s</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">push</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">tos</span> <span class="o">==</span> <span class="n">element</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">// 스택이 다 찼음</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="n">tos</span><span class="o">++;</span>
+			<span class="n">element</span><span class="o">[</span><span class="n">tos</span><span class="o">]</span> <span class="o">=</span> <span class="n">str</span><span class="o">;</span> <span class="c1">// 요소 스택에 저장 후 스택 포인터 증가</span>
+			<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">exercise9</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"총 스택 저장 공간의 크기 입력 &gt;&gt; "</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		
+		<span class="nc">StringStack</span> <span class="n">ss</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringStack</span><span class="o">(</span><span class="n">n</span><span class="o">);</span> <span class="c1">// n개의 문자열이 저장 가능한 스택 생성</span>
+		
+		<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"문자열 입력 &gt;&gt; "</span><span class="o">);</span>
+			<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"그만"</span><span class="o">))</span>
+				<span class="k">break</span><span class="o">;</span>
+			<span class="kt">boolean</span> <span class="n">res</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">str</span><span class="o">);</span> <span class="c1">// 스택에 저장</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">res</span> <span class="o">==</span> <span class="kc">false</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"스택이 꽉 차서 푸시 불가!"</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"스택에 저장된 모든 문자열 팝 : "</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="c1">// 현재 스택에 저장된 문자열 개수</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">len</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="c1">// 스택에 저장된 개수만큼 루프</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">ss</span><span class="o">.</span><span class="na">pop</span><span class="o">()</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span> <span class="c1">// 스택에서 팝하여 출력</span>
+		<span class="o">}</span>
+		<span class="n">scanner</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/java/2020/06/19/ex4.html" title="exercise: 클래스와 객체">exercise: 클래스와 객체</a><a class="next" href="/jekyll-theme-yat/java/2020/06/30/ex7.html" title="exercise: 제네릭과 컬렉션">exercise: 제네릭과 컬렉션</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/12/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%831.html" title="exercise: 제네릭과 컬렉션">웹사이트 layout1</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/18/js2.html" title="exercise: 제네릭과 컬렉션">[javascript] 로또 번호 생성기 만들기</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/04/17/java3.html" title="exercise: 제네릭과 컬렉션">[JAVA] 개념 및 용어정리</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/12/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%832.html" title="exercise: 제네릭과 컬렉션">웹사이트 layout2</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>27</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-HTML5&amp;CSS3">
+          HTML5&amp;CSS3 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JAVA">
+          JAVA <span>14</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JSP">
+          JSP <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-javascript">
+          javascript <span>4</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 Hwang Sumin</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Contact: hwang.sumin.0313@gmail.com </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

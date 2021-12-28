@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>exercise: 클래스와 객체 | SUMIN’s BLOG</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="exercise: 클래스와 객체">
+<meta name="author" content="Hwang Sumin">
+<meta property="og:locale" content="ko">
+<meta name="description" content="실습문제 5 문제 1번 자바 클래스를 작성하는 연습을 해보자. 다음 main() 메소드를 실행하였을 때 예시와 같이 출력되도록 TV 클래스를 작성하라.">
+<meta property="og:description" content="실습문제 5 문제 1번 자바 클래스를 작성하는 연습을 해보자. 다음 main() 메소드를 실행하였을 때 예시와 같이 출력되도록 TV 클래스를 작성하라.">
+<link rel="canonical" href="/jekyll-theme-yat/java/2020/06/19/ex4.html">
+<meta property="og:url" content="/jekyll-theme-yat/java/2020/06/19/ex4.html">
+<meta property="og:site_name" content="SUMIN’s BLOG">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-06-19T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="exercise: 클래스와 객체">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Hwang Sumin"},"description":"실습문제 5 문제 1번 자바 클래스를 작성하는 연습을 해보자. 다음 main() 메소드를 실행하였을 때 예시와 같이 출력되도록 TV 클래스를 작성하라.","headline":"exercise: 클래스와 객체","dateModified":"2020-06-19T00:00:00+00:00","datePublished":"2020-06-19T00:00:00+00:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/java/2020/06/19/ex4.html"},"url":"/jekyll-theme-yat/java/2020/06/19/ex4.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="SUMIN's BLOG">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+ <!--<img class="site-favicon" title="SUMIN&#39;s BLOG" src="" onerror="this.style.display='none'">-->
+  <img class="site-favicon" title="HOME" src="" onerror="this.style.display='none'">
+  SUMIN's BLOG
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/menu.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a><a class="page-link" href="/jekyll-theme-yat/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html">PORTFOLIO</a>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+     
+      if (y <= 0) {
+        scrollStatus = "top";
+      }  
+       else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+     
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+      
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">exercise: 클래스와 객체</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <!--
+<p class="post-meta">
+    <time class="dt-published" datetime="2020-06-19T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jun 19, 2020
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 31 mins</span>
+  </p>
+--><div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="실습문제-5">실습문제 5</h2>
+
+<h3 id="문제-1번">문제 1번</h3>
+<p>자바 클래스를 작성하는 연습을 해보자. 다음 <code class="language-plaintext highlighter-rouge">main()</code> 메소드를 실행하였을 때 예시와 같이 출력되도록 <code class="language-plaintext highlighter-rouge">TV</code> 클래스를 작성하라.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+   <span class="no">TV</span> <span class="n">myTV</span> <span class="o">=</span> <span class="k">new</span> <span class="no">TV</span><span class="o">(</span><span class="s">"LG"</span><span class="o">,</span> <span class="mi">2017</span><span class="o">,</span> <span class="mi">32</span><span class="o">);</span> <span class="c1">//LG에서 만든 2017년 32인치</span>
+   <span class="n">myTV</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+ LG에서 만든 2017년형 32인치 TV
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">class</span> <span class="nc">TV</span><span class="o">{</span>
+	<span class="nc">String</span> <span class="n">company</span><span class="o">;</span> 
+	<span class="kt">int</span> <span class="n">year</span><span class="o">;</span> 
+	<span class="kt">int</span> <span class="n">inch</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nf">TV</span><span class="o">(</span><span class="nc">String</span> <span class="n">company</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">inch</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">company</span> <span class="o">=</span> <span class="n">company</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">inch</span> <span class="o">=</span> <span class="n">inch</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">year</span> <span class="o">=</span> <span class="n">year</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">company</span><span class="o">+</span><span class="s">"에서 만든 "</span><span class="o">+</span><span class="n">year</span><span class="o">+</span><span class="s">"년형 "</span><span class="o">+</span><span class="n">inch</span><span class="o">+</span><span class="s">"인치"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Exercise1</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="no">TV</span> <span class="n">myTV</span> <span class="o">=</span> <span class="k">new</span> <span class="no">TV</span><span class="o">(</span><span class="s">"LG"</span><span class="o">,</span> <span class="mi">2017</span><span class="o">,</span> <span class="mi">32</span><span class="o">);</span>
+		<span class="n">myTV</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-2번">문제 2번</h3>
+
+<p>Grade 클래스를 작성해보자. 3 과목의 점수를 입력받아 <code class="language-plaintext highlighter-rouge">Grade</code> 객체를 생성하고 성적 평균을 출력하는 <code class="language-plaintext highlighter-rouge">main()</code>과 실행 예시는 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+   <span class="c1">// TODO Auto-generated method stub</span>
+   <span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+   
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"수학, 과학, 영어 순으로 3개의 정수 입력 &gt;&gt; "</span><span class="o">);</span>
+   <span class="kt">int</span> <span class="n">math</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+   <span class="kt">int</span> <span class="n">science</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+   <span class="kt">int</span> <span class="n">english</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+   <span class="nc">Grade</span> <span class="n">me</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Grade</span><span class="o">(</span><span class="n">math</span><span class="o">,</span> <span class="n">science</span><span class="o">,</span> <span class="n">english</span><span class="o">);</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"평균은 "</span><span class="o">+</span><span class="n">me</span><span class="o">.</span><span class="na">average</span><span class="o">());</span> <span class="c1">// average()는 평균을 계산하여 리턴</span>
+   
+   <span class="n">sc</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+  수학, 과학, 영어 순으로 3개의 정수 입력 &gt;&gt; 90 88 96
+  평균은 91
+
+[Hint] `Grade` 클래스에 `int` 타입의 `math`, `science`, `english` 필드를 `private`로 선언하고, 생성자와 세 과목의 평균을 리턴하는 `average()` 메소드를 작성한다.
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Grade</span><span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">math</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">science</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">english</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nf">Grade</span><span class="o">(</span><span class="kt">int</span> <span class="n">math</span><span class="o">,</span> <span class="kt">int</span> <span class="n">science</span><span class="o">,</span> <span class="kt">int</span> <span class="n">english</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">math</span> <span class="o">=</span> <span class="n">math</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">science</span> <span class="o">=</span> <span class="n">science</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">english</span> <span class="o">=</span> <span class="n">english</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">double</span> <span class="nf">average</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="o">(</span><span class="n">math</span> <span class="o">+</span> <span class="n">science</span> <span class="o">+</span> <span class="n">english</span><span class="o">)/</span><span class="mi">3</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>	
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Exercise2</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		 <span class="c1">// TODO Auto-generated method stub</span>
+		   <span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		   
+		   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"수학, 과학, 영어 순으로 3개의 정수 입력 &gt;&gt; "</span><span class="o">);</span>
+		   <span class="kt">int</span> <span class="n">math</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		   <span class="kt">int</span> <span class="n">science</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		   <span class="kt">int</span> <span class="n">english</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		   <span class="nc">Grade</span> <span class="n">me</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Grade</span><span class="o">(</span><span class="n">math</span><span class="o">,</span> <span class="n">science</span><span class="o">,</span> <span class="n">english</span><span class="o">);</span>
+		   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"평균은 "</span><span class="o">+</span><span class="n">me</span><span class="o">.</span><span class="na">average</span><span class="o">());</span> <span class="c1">// average()는 평균을 계산하여 리턴</span>
+		   
+		   <span class="n">sc</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-3번">문제 3번</h3>
+
+<p>노래 한 곡을 나타내는 <code class="language-plaintext highlighter-rouge">Song</code> 클래스를 작성하라. <code class="language-plaintext highlighter-rouge">Song</code>은 다음 필드로 구성된다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 노래의 제목을 나타내는 `title`
+- 가수를 나타내는 `artist`
+- 노래가 발표된 연도를 나타내는 `year`
+- 국적을 나타내는 `country`
+</code></pre></div></div>
+
+<p>또한 <code class="language-plaintext highlighter-rouge">Song</code> 클래스에 다음 생성자와 메소드를 작성하라.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 생성자 2개: 기본 생성자와 매개변수로 모든 필드를 초기화하는 생성자
+- 노래 정보를 출력하는 show() 메소드
+- `main()` 메소드에서는 1978년, 스웨덴 국적의 ABBA가 부른 "Dancing Queen"을
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">song</code> 객체로 생성하고 <code class="language-plaintext highlighter-rouge">show()</code>를 이용하여 노래의 정보를 다음과 같이 출력하라.
+    예시)
+      1978년 스웨덴국적의 ABBA가 부른 Dancing Queen</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Song</span><span class="o">{</span>
+	<span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+	<span class="nc">String</span> <span class="n">artist</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">year</span><span class="o">;</span>
+	<span class="nc">String</span> <span class="n">country</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nf">Song</span><span class="o">()</span> <span class="o">{}</span>
+	<span class="kd">public</span> <span class="nf">Song</span><span class="o">(</span><span class="nc">String</span> <span class="n">title</span><span class="o">,</span> <span class="nc">String</span> <span class="n">artist</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="nc">String</span> <span class="n">country</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">artist</span> <span class="o">=</span> <span class="n">artist</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">year</span> <span class="o">=</span> <span class="n">year</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">country</span> <span class="o">=</span> <span class="n">country</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">year</span><span class="o">+</span><span class="s">"년 "</span><span class="o">+</span><span class="n">country</span><span class="o">+</span><span class="s">"국적의 "</span><span class="o">+</span><span class="n">artist</span><span class="o">+</span><span class="s">"가 부른 "</span><span class="o">+</span><span class="n">title</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Exercise3</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+		  <span class="nc">Song</span> <span class="n">mySong</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Song</span><span class="o">(</span><span class="s">"Dancing Queen"</span><span class="o">,</span> <span class="s">"ABBA"</span><span class="o">,</span> <span class="mi">1978</span><span class="o">,</span> <span class="s">"스웨덴"</span><span class="o">);</span>
+		  <span class="n">mySong</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-4번">문제 4번</h3>
+
+<p>다음 멤버를 가지고 직사각형을 표현하는 <code class="language-plaintext highlighter-rouge">Rectangle</code> 클래스를 작성하라.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- `int` 타입의 `x`, `y`, `width`, `height` 필드: 사각형을 구성하는 점과 크기 정보
+- `x`, `y`, `width`, `height` 값을 매개변수로 받아 필드를 초기화하는 생성자
+- `int square()` : 사각형 넓이 리턴
+- `void show()` : 사각형의 좌표와 넓이를 화면에 출력
+- `boolean contatins(Rectangle r)` : 매개변수로 받은 r이 현 사각형 안에 있으면 `true` 리턴
+- `main()` 메소드의 코드와 실행 결과는 다음과 같다
+  public static void main(String[] args) {
+     Rectangle r = new Rectangle(2, 2, 8, 7);
+     Rectangle s = new Rectangle(5, 5, 6, 6);
+     Rectangle t = new Rectangle(1, 1, 10, 10);
+
+     r.show();
+     System.out.println("s의 면적은 "+s.square());
+     if(t.contains(r)) System.out.println("t는 r을 포함합니다.");
+     if(t.contains(s)) System.out.println("t는 s를 포함합니다.");
+  }
+  
+예시)
+  (2,2)에서 크기가 8x7인 사각형
+  s의 면적은 36
+  t는 r을 포함합니다.
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Rectangle</span><span class="o">{</span>
+	
+	<span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">y</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">width</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">height</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nf">Rectangle</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">,</span> <span class="kt">int</span> <span class="n">height</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">width</span> <span class="o">=</span> <span class="n">width</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">height</span> <span class="o">=</span> <span class="n">height</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">square</span><span class="o">()</span> <span class="o">{</span>	<span class="k">return</span> <span class="n">width</span><span class="o">*</span><span class="n">height</span><span class="o">;</span> <span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="o">()</span> <span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"("</span><span class="o">+</span><span class="n">x</span><span class="o">+</span><span class="s">","</span><span class="o">+</span><span class="n">y</span><span class="o">+</span><span class="s">")"</span><span class="o">+</span><span class="s">"에서 크기가 "</span><span class="o">+</span><span class="n">width</span><span class="o">+</span><span class="s">"x"</span><span class="o">+</span><span class="n">height</span><span class="o">+</span><span class="s">"인 사각형"</span><span class="o">);</span> <span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">contains</span><span class="o">(</span><span class="nc">Rectangle</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">x</span><span class="o">&lt;</span><span class="n">r</span><span class="o">.</span><span class="na">x</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="o">.</span><span class="na">y</span><span class="o">&lt;</span><span class="n">r</span><span class="o">.</span><span class="na">y</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">width</span><span class="o">&gt;</span><span class="n">r</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">r</span><span class="o">.</span><span class="na">width</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">height</span><span class="o">&gt;</span><span class="n">r</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">r</span><span class="o">.</span><span class="na">height</span><span class="o">)</span>
+			<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+		<span class="k">else</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Exercise4</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Rectangle</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Rectangle</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">7</span><span class="o">);</span>
+		<span class="nc">Rectangle</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Rectangle</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">6</span><span class="o">);</span>
+		<span class="nc">Rectangle</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Rectangle</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+		   
+		<span class="n">r</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"s의 면적은 "</span><span class="o">+</span><span class="n">s</span><span class="o">.</span><span class="na">square</span><span class="o">());</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">r</span><span class="o">))</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"t는 r을 포함합니다."</span><span class="o">);</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">s</span><span class="o">))</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"t는 s를 포함합니다."</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-5번">문제 5번</h3>
+
+<p>하루의 할 일을 표현하는 클래스 Day는 다음과 같다. 한 달의 할 일을 표현하는 <code class="language-plaintext highlighter-rouge">MonthSchedule</code> 클래스를 작성하라.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Day</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">work</span><span class="o">;</span> <span class="c1">//하루의 할 일을 나타내는 문자열</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="nc">String</span> <span class="n">work</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">work</span> <span class="o">=</span> <span class="n">work</span><span class="o">;</span> <span class="o">}</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">get</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">work</span><span class="o">;</span> <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">work</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"없습니다."</span><span class="o">);</span>
+      <span class="k">else</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">work</span><span class="o">+</span><span class="s">"입니다."</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">MonthSchedule</code> 클래스에는 <code class="language-plaintext highlighter-rouge">Day</code> 객체 배열과 적절한 필드, 메소드를 작성하고 실행 예시처럼 입력, 보기, 끝내기 등의 3개의 기능을 작성하라.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+  이번달 스케쥴 관리 프로그램.
+  할일(입력:1, 보기:2, 끝내기:3) &gt;&gt;1
+  날짜(1~30)?1
+  할일(빈칸없이입력)?자바공부
+
+  할일(입력:1, 보기:2, 끝내기:3) &gt;&gt;2
+  날짜(1~30)?1
+  1일의 할 일은 자바공부입니다.
+
+  할일(입력:1, 보기:2, 끝내기:3) &gt;&gt;3
+  프로그램을 종료합니다.
+  
+[Hint] `MonthSchedule`에는 생성자, `input()`, `view()`, `finish()`, `run()` 메소드를 만들고 `main()`에서 다음과 같이 호출하여 실행하고 `run()`에서 메뉴를 출력하고 처리한다.
+ 
+  MonthSchedule april = new MonthSchedule(30); // 4월달의 할 일
+  april.run();
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Day</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">work</span><span class="o">;</span> <span class="c1">//하루의 할 일을 나타내는 문자열</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="nc">String</span> <span class="n">work</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">work</span> <span class="o">=</span> <span class="n">work</span><span class="o">;</span> <span class="o">}</span> <span class="c1">//할일 저장</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">get</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">work</span><span class="o">;</span> <span class="o">}</span> <span class="c1">//할일 출력</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">work</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"없습니다."</span><span class="o">);</span>
+		<span class="k">else</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">work</span><span class="o">+</span><span class="s">"입니다."</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MonthSchedule</span><span class="o">{</span>
+	
+	<span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+	
+	<span class="nc">Day</span><span class="o">[]</span> <span class="n">day</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">MonthSchedule</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">day</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Day</span><span class="o">[</span><span class="n">i</span><span class="o">];</span> <span class="c1">//총 30일치의 할 일을 저장해놓을 배열.</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">input</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//할일 저장하기</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"날짜(1~30)&gt;&gt; "</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">date</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">day</span><span class="o">[</span><span class="n">date</span><span class="o">]==</span><span class="kc">null</span><span class="o">)</span>
+			<span class="n">day</span><span class="o">[</span><span class="n">date</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Day</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"할일(빈칸없이입력)&gt;&gt; "</span><span class="o">);</span>
+		<span class="nc">String</span> <span class="n">plan</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+		<span class="n">day</span><span class="o">[</span><span class="n">date</span><span class="o">].</span><span class="na">set</span><span class="o">(</span><span class="n">plan</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">view</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//저장해놓은 할일 출력하기</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"날짜(1~30)&gt;&gt; "</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">date</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">day</span><span class="o">[</span><span class="n">date</span><span class="o">]==</span><span class="kc">null</span><span class="o">)</span>
+			<span class="n">day</span><span class="o">[</span><span class="n">date</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Day</span><span class="o">();</span>
+		<span class="n">day</span><span class="o">[</span><span class="n">date</span><span class="o">].</span><span class="na">show</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">finish</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//종료하기</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램을 종료합니다."</span><span class="o">);</span> 
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이번달 스케쥴 관리 프로그램"</span><span class="o">);</span>
+		<span class="k">for</span><span class="o">(;;)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"할일(입력:1, 보기:2, 끝내기:3)&gt;&gt; "</span><span class="o">);</span>
+			<span class="kt">int</span> <span class="n">work</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">work</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span>
+				<span class="n">input</span><span class="o">();</span>
+			<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">work</span><span class="o">==</span><span class="mi">2</span><span class="o">)</span>
+				<span class="n">view</span><span class="o">();</span>
+			<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">work</span><span class="o">==</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">finish</span><span class="o">();</span>
+				<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Exercise7</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">MonthSchedule</span> <span class="n">april</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MonthSchedule</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span> <span class="c1">// 4월달의 할 일</span>
+		<span class="n">april</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문제-6번">문제 6번</h3>
+<p>이름(name), 전화번호(tel) 필드와 생성자 등을 가진 <code class="language-plaintext highlighter-rouge">Phone</code> 클래스를 작성하고, 실행 예시와 같이 작동하는 <code class="language-plaintext highlighter-rouge">PhonBook</code> 클래스를 작성하라.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시)
+  인원수 &gt;&gt; 3
+  이름과 전화번호(이름과 번호는 빈 칸없이 입력)&gt;&gt;황기태 777-7777
+  이름과 전화번호(이름과 번호는 빈 칸없이 입력)&gt;&gt;나명품 999-9999
+  이름과 전화번호(이름과 번호는 빈 칸없이 입력)&gt;&gt;최자바 333-1234
+  저장되었습니다...
+  검색할 이름 &gt;&gt;황기순
+  황기순이 없습니다.
+  검색할 이름 &gt;&gt;최자바
+  최자바의 번호는 333-1234 입니다.
+  검색할 이름 &gt;&gt;그만
+  
+[Hint] `PhoneBook` 클래스에서 저장할 사람의 수를 입력받고, `Phone` 배열을 생성한다. 한 사람의 정보는 하나의 `Phone` 객체에 저장한다. 
+이때, 문자열 a와 b가 같은지 비교할 때 `a.equals(b)`가 참인지로 판단한다.
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Phone</span><span class="o">{</span>
+	<span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="nc">String</span> <span class="n">tel</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="nf">Phone</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">tel</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">tel</span> <span class="o">=</span> <span class="n">tel</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">PhoneBook</span><span class="o">{</span>
+	
+	<span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+	<span class="nc">Phone</span> <span class="n">newPhone</span><span class="o">[];</span> <span class="c1">//객체를 저장할 배열</span>
+
+	<span class="kd">public</span> <span class="nf">PhoneBook</span><span class="o">(</span><span class="kt">int</span> <span class="n">numOfPeople</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">newPhone</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Phone</span><span class="o">[</span><span class="n">numOfPeople</span><span class="o">];</span> <span class="c1">//배열 수 지정</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">newPhone</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"이름과 전화번호&gt;&gt; "</span><span class="o">);</span>
+			<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+			<span class="nc">String</span> <span class="n">tel</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+			
+			<span class="nc">Phone</span> <span class="n">newBook</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Phone</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">tel</span><span class="o">);</span>
+			<span class="n">newPhone</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">newBook</span><span class="o">;</span> <span class="c1">//배열에 객체 저장</span>
+		<span class="o">}</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"저장되었습니다.... "</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">search</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">for</span><span class="o">(;;)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"검색할 이름&gt;&gt; "</span><span class="o">);</span>
+			<span class="nc">String</span> <span class="n">searchName</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+			
+			<span class="k">if</span><span class="o">(</span><span class="n">searchName</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"그만"</span><span class="o">))</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램을 종료합니다...."</span><span class="o">);</span>
+				<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+				
+			<span class="kt">int</span> <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+			<span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
+			
+			<span class="k">for</span><span class="o">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">newPhone</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">((</span><span class="n">newPhone</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">name</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">searchName</span><span class="o">))</span> <span class="o">{</span>
+					<span class="n">correct</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">correct</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">searchName</span><span class="o">+</span><span class="s">"은(는) 없는 이름입니다. "</span><span class="o">);</span>
+			<span class="k">else</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">searchName</span><span class="o">+</span><span class="s">"의 전화번호는 "</span><span class="o">+</span><span class="n">newPhone</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">tel</span><span class="o">+</span><span class="s">"입니다. "</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Exercise8</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"인원 수&gt;&gt; "</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">numOfPeople</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		
+		<span class="nc">PhoneBook</span> <span class="n">newPhoneBook</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PhoneBook</span><span class="o">(</span><span class="n">numOfPeople</span><span class="o">);</span>
+		<span class="n">newPhoneBook</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+		<span class="n">newPhoneBook</span><span class="o">.</span><span class="na">search</span><span class="o">();</span>
+		
+		<span class="n">sc</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/java/2020/05/31/java11.html" title="[JAVA] 제네릭과 컬렉션">[JAVA] 제네릭과 컬렉션</a><a class="next" href="/jekyll-theme-yat/java/2020/06/25/ex5.html" title="exercise:상속">exercise:상속</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/18/js2.html" title="exercise:상속">[javascript] 로또 번호 생성기 만들기</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/06/js1.html" title="exercise:상속">[javascript] 가위바위보 게임 만들기</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/06/19/ex4.html" title="exercise:상속">exercise: 클래스와 객체</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%833.html" title="exercise:상속">웹사이트 layout3</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>27</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-HTML5&amp;CSS3">
+          HTML5&amp;CSS3 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JAVA">
+          JAVA <span>14</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JSP">
+          JSP <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-javascript">
+          javascript <span>4</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 Hwang Sumin</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Contact: hwang.sumin.0313@gmail.com </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[javascript] 가위바위보 게임 만들기 | SUMIN’s BLOG</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="[javascript] 가위바위보 게임 만들기">
+<meta name="author" content="Hwang Sumin">
+<meta property="og:locale" content="ko">
+<meta name="description" content="본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.">
+<meta property="og:description" content="본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.">
+<link rel="canonical" href="/jekyll-theme-yat/javascript/2021/01/06/js1.html">
+<meta property="og:url" content="/jekyll-theme-yat/javascript/2021/01/06/js1.html">
+<meta property="og:site_name" content="SUMIN’s BLOG">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-01-06T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="[javascript] 가위바위보 게임 만들기">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Hwang Sumin"},"description":"본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.","headline":"[javascript] 가위바위보 게임 만들기","dateModified":"2021-01-06T00:00:00+00:00","datePublished":"2021-01-06T00:00:00+00:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/javascript/2021/01/06/js1.html"},"url":"/jekyll-theme-yat/javascript/2021/01/06/js1.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="SUMIN's BLOG">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+ <!--<img class="site-favicon" title="SUMIN&#39;s BLOG" src="" onerror="this.style.display='none'">-->
+  <img class="site-favicon" title="HOME" src="" onerror="this.style.display='none'">
+  SUMIN's BLOG
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/menu.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a><a class="page-link" href="/jekyll-theme-yat/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html">PORTFOLIO</a>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+     
+      if (y <= 0) {
+        scrollStatus = "top";
+      }  
+       else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+     
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+      
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">[javascript] 가위바위보 게임 만들기</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <!--
+<p class="post-meta">
+    <time class="dt-published" datetime="2021-01-06T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jan 06, 2021
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 11 mins</span>
+  </p>
+--><div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTML">#HTML</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CSS">#CSS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#javascript">#javascript</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><em>본 프로젝트는 심준식, 이창욱 저자의 ‘애프터스킬 자바스크립트 프론트엔드 프로젝트 가이드 술술 잘 읽히는 JavaScript 필독서’를 기반으로 진행되었다.</em></p>
+
+<h2 id="가위바위보-게임이란"><strong>가위바위보 게임이란?</strong></h2>
+
+<p>게임의 요구사항을 먼저 살펴보도록 하자.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>※요구사항※
+
+1. 사용자와 컴퓨터는 동시에 패를 낸다.  
+2. 컴퓨터는 매번 랜덤한 패를 낸다.  
+3. 서로의 패를 비교해서 승자를 정한다
+4. 결과를 알려준다
+</code></pre></div></div>
+
+<h2 id="1-사용자와-컴퓨터는-동시에-패를-낸다"><strong>1. 사용자와 컴퓨터는 동시에 패를 낸다</strong></h2>
+
+<p>실제로 컴퓨터는 <em>두 가지 일을 동시에</em> 수행할 수 없다. 그러니 <em>그렇게 보이도록</em> 구현하는 것이 목표이다. 
+따라서, 아래와 같은 조건을 만족시키면 된다.</p>
+<blockquote>
+  <h4 id="조건"><strong>조건</strong></h4>
+  <p>하나. 사용자에게서 입력을 받는다.<br>
+둘. 그 직후 컴퓨터의 패를 계산한다.</p>
+</blockquote>
+
+<p>이렇게 하면 마치 동시에 낸 것처럼 보일 것이다. 브라우저에서 제공하는 API인 <code class="language-plaintext highlighter-rouge">prompt</code>를 이용해 프롬프트 창으로 사용자의 입력을 받고, 확인 버튼을 누르는 즉시 컴퓨터의 패를 제시하여 그 결과를 비교한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">player</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="dl">'</span><span class="s1">가위 or 바위 or 보</span><span class="dl">'</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<h2 id="2-컴퓨터는-매번-랜덤한-패를-낸다"><strong>2. 컴퓨터는 매번 랜덤한 패를 낸다</strong></h2>
+
+<blockquote>
+  <h4 id="조건-1"><strong>조건</strong></h4>
+  <p>하나. <code class="language-plaintext highlighter-rouge">Math.random()</code> 함수를 이용해 실행할 때마다 다른 값을 얻도록 한다.<br>
+둘. 얻은 값의 범위를 3등분하여 가위, 바위, 보로 나눈다.</p>
+</blockquote>
+
+<p>가위, 바위, 보 중 랜덤한 패를 내기 위해서는 매번 다른 값을 리턴해주는 함수가 필요하다. 이때 사용되는 함수가 <a href="developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/random"><code class="language-plaintext highlighter-rouge">Math.random()</code></a>이다. 이 함수는 0 이상 1 미만의 부동소숫점 의사 난수를 반환한다.
+따라서 컴퓨터의 패를 지칭하는 변수 <code class="language-plaintext highlighter-rouge">computer</code>에 랜덤한 값을 저장한 후, 그 수의 범위에 따라 가위/바위/보를 결정한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">computer</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">&lt;</span> <span class="mf">0.33</span><span class="p">)</span>
+  <span class="nx">computer</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">가위</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">&lt;</span> <span class="mf">0.66</span><span class="p">)</span>
+  <span class="nx">computer</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">바위</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">else</span>
+  <span class="nx">computer</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">보</span><span class="dl">'</span><span class="p">;</span>
+
+</code></pre></div></div>
+
+<h2 id="3-서로의-패를-비교해서-승자를-정한다----4--결과를-알려준다"><strong>3. 서로의 패를 비교해서 승자를 정한다  /  4.  결과를 알려준다</strong></h2>
+
+<p>가위바위보 게임에서는 어떤 패를 냈느냐에 따라 총 3가지의 결과가 존재한다. 이기는 경우, 지는 경우, 비기는 경우가 바로 그것이다.
+따라서 <code class="language-plaintext highlighter-rouge">switch-case</code>문을 이용해 플레이어의 패에 따른 결과를 비교하고자 한다.</p>
+<blockquote>
+  <h4 id="조건-2"><strong>조건</strong></h4>
+  <p>하나. 플레이어가 가위/바위/보를 냈을 때 발생하는 승/패/무승부의 총 9가지 경우를 비교한다.<br>
+둘. 그 외 무효한 입력을 했을 경우를 대비한 출력도 마련한다.</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">switch-case</code>문으로 가위/바위/보를 나누고 각 <code class="language-plaintext highlighter-rouge">case</code>별로 승/패/무승부를 다시 나누고자 할 때, 내부에 <code class="language-plaintext highlighter-rouge">if</code>문을 쓸 것인지 다시 <code class="language-plaintext highlighter-rouge">switch-case</code>문을 쓸 것인지 고민했다. 
+그러나 작성해본 결과, <code class="language-plaintext highlighter-rouge">switch-case</code>문이 중첩되니 보기 불편한 것 같아 <code class="language-plaintext highlighter-rouge">if</code>문을 쓰기로 했다. <em>(책에서는 switch-case문으로 쓰였다.)</em></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="dl">'</span><span class="s1">가위</span><span class="dl">'</span><span class="p">:</span> <span class="c1">//플레이어가 가위를 냈을 때의 결과를 비교하기 </span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">가위</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴퓨터는 가위! 비겼습니다.</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">보</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴퓨터는 바위! 졌습니다ㅠㅠ</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">else</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴퓨터는 보! 이겼습니다^^!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+    
+  <span class="k">case</span> <span class="dl">'</span><span class="s1">바위</span><span class="dl">'</span><span class="p">:</span><span class="c1">//플레이어가 바위를 냈을 때의 결과를 비교하기 </span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">바위</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴퓨터는 바위! 비겼습니다.</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">보</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴퓨터는 보! 졌습니다ㅠㅠ</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">else</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴퓨터는 가위! 이겼습니다^^!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+    
+  <span class="k">case</span> <span class="dl">'</span><span class="s1">보</span><span class="dl">'</span><span class="p">:</span><span class="c1">//플레이어가 보를 냈을 때의 결과를 비교하기 </span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">보</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴퓨터는 보! 비겼습니다.</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">가위</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴퓨터는 가위! 졌습니다ㅠㅠ</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">else</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴퓨터는 바위! 이겼습니다^^!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+    
+  <span class="nl">default</span><span class="p">:</span><span class="c1">//플레이어가 아무것도 입력하지 않거나, 가위/바위/보를 제외한 패를 냈을 때</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">승패를 내릴 수 없습니다!</span><span class="dl">'</span><span class="p">)</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>위의 코드는 승자를 정함과 동시에 플레이어에게 결과를 출력해준다. 이대로 완성했다고 봐도 무방하다. 그러나 승/패/무승부를 출력하는 코드가 중복된다는 판단 하에 출력 함수를 따로 만들기로 하였다.
+ 따라서 수정된 코드는 다음과 같다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">switch</span> <span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="dl">'</span><span class="s1">가위</span><span class="dl">'</span><span class="p">:</span> <span class="c1">//플레이어가 가위를 냈을 때의 결과를 비교하기 </span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">가위</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nx">draw</span><span class="p">(</span><span class="nx">computer</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">보</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nx">win</span><span class="p">(</span><span class="nx">computer</span><span class="p">);</span>
+    <span class="k">else</span>
+    	<span class="nx">lose</span><span class="p">(</span><span class="nx">computer</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+
+  <span class="k">case</span> <span class="dl">'</span><span class="s1">바위</span><span class="dl">'</span><span class="p">:</span> <span class="c1">//플레이어가 바위를 냈을 때의 결과를 비교하기 </span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">바위</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nx">draw</span><span class="p">(</span><span class="nx">computer</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">보</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nx">lose</span><span class="p">(</span><span class="nx">computer</span><span class="p">);</span>
+    <span class="k">else</span>
+      <span class="nx">win</span><span class="p">(</span><span class="nx">computer</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+
+  <span class="k">case</span> <span class="dl">'</span><span class="s1">보</span><span class="dl">'</span><span class="p">:</span> <span class="c1">//플레이어가 보를 냈을 때의 결과를 비교하기 </span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">보</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nx">draw</span><span class="p">(</span><span class="nx">computer</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">computer</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">가위</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nx">lose</span><span class="p">(</span><span class="nx">computer</span><span class="p">);</span>
+    <span class="k">else</span>
+      <span class="nx">win</span><span class="p">(</span><span class="nx">computer</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+
+  <span class="nl">default</span><span class="p">:</span> <span class="c1">//플레이어가 아무것도 입력하지 않거나, 가위/바위/보를 제외한 패를 냈을 때</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">승패를 내릴 수 없습니다!</span><span class="dl">'</span><span class="p">)</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">win</span><span class="p">(</span><span class="nx">comInput</span><span class="p">){</span>
+	<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">`컴퓨터는 </span><span class="p">${</span><span class="nx">comInput</span><span class="p">}</span><span class="s2">! 이겼습니다^^!`</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">lose</span><span class="p">(</span><span class="nx">comInput</span><span class="p">){</span>
+	<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">`컴퓨터는 </span><span class="p">${</span><span class="nx">comInput</span><span class="p">}</span><span class="s2">! 졌습니다ㅠㅠ!`</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">draw</span><span class="p">(</span><span class="nx">comInput</span><span class="p">){</span>
+	<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">`컴퓨터는 </span><span class="p">${</span><span class="nx">comInput</span><span class="p">}</span><span class="s2">! 비겼습니다!`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행 결과 잘 작동하는 것을 확인할 수 있다.</p>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%837.html" title="웹사이트 layout7">웹사이트 layout7</a><a class="next" href="/jekyll-theme-yat/javascript/2021/01/18/js2.html" title="[javascript] 로또 번호 생성기 만들기">[javascript] 로또 번호 생성기 만들기</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/22/js3.html" title="[javascript] 로또 번호 생성기 만들기">[javascript] 농구 게임 만들기(1)</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/04/17/java2.html" title="[javascript] 로또 번호 생성기 만들기">[JAVA] 배열</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/22/js4.html" title="[javascript] 로또 번호 생성기 만들기">[javascript] 농구 게임 만들기(2)</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/05/04/java7.html" title="[javascript] 로또 번호 생성기 만들기">[JAVA] static과 final</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>27</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-HTML5&amp;CSS3">
+          HTML5&amp;CSS3 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JAVA">
+          JAVA <span>14</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JSP">
+          JSP <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-javascript">
+          javascript <span>4</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 Hwang Sumin</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Contact: hwang.sumin.0313@gmail.com </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

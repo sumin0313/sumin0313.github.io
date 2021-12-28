@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[JAVA] 메소드 오버라이딩 | SUMIN’s BLOG</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="[JAVA] 메소드 오버라이딩">
+<meta name="author" content="Hwang Sumin">
+<meta property="og:locale" content="ko">
+<meta name="description" content="메소드 오버라이딩(Method Overriding) 같은 이름을 가지고 있으나 다른 기능을 할 때 메소드 오버로딩(overloading) 이라고 칭한 바 있다. 메소드 오버라이딩은 메소드를 재정의 하는 것을 의미한다. 슈퍼 클래스를 상속한 서브 클래스는 슈퍼 클래스 메소드의 이름, 매개변수 타입 및 개수, 리턴 타입 등 모든 것을 동일하게 작성한다. 메소드 무시하기, 덮어쓰기로 번역되기도 한다.">
+<meta property="og:description" content="메소드 오버라이딩(Method Overriding) 같은 이름을 가지고 있으나 다른 기능을 할 때 메소드 오버로딩(overloading) 이라고 칭한 바 있다. 메소드 오버라이딩은 메소드를 재정의 하는 것을 의미한다. 슈퍼 클래스를 상속한 서브 클래스는 슈퍼 클래스 메소드의 이름, 매개변수 타입 및 개수, 리턴 타입 등 모든 것을 동일하게 작성한다. 메소드 무시하기, 덮어쓰기로 번역되기도 한다.">
+<link rel="canonical" href="/jekyll-theme-yat/java/2020/05/15/java9.html">
+<meta property="og:url" content="/jekyll-theme-yat/java/2020/05/15/java9.html">
+<meta property="og:site_name" content="SUMIN’s BLOG">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-15T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="[JAVA] 메소드 오버라이딩">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Hwang Sumin"},"description":"메소드 오버라이딩(Method Overriding) 같은 이름을 가지고 있으나 다른 기능을 할 때 메소드 오버로딩(overloading) 이라고 칭한 바 있다. 메소드 오버라이딩은 메소드를 재정의 하는 것을 의미한다. 슈퍼 클래스를 상속한 서브 클래스는 슈퍼 클래스 메소드의 이름, 매개변수 타입 및 개수, 리턴 타입 등 모든 것을 동일하게 작성한다. 메소드 무시하기, 덮어쓰기로 번역되기도 한다.","headline":"[JAVA] 메소드 오버라이딩","dateModified":"2020-05-15T00:00:00+00:00","datePublished":"2020-05-15T00:00:00+00:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/java/2020/05/15/java9.html"},"url":"/jekyll-theme-yat/java/2020/05/15/java9.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="SUMIN's BLOG">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+ <!--<img class="site-favicon" title="SUMIN&#39;s BLOG" src="" onerror="this.style.display='none'">-->
+  <img class="site-favicon" title="HOME" src="" onerror="this.style.display='none'">
+  SUMIN's BLOG
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/menu.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a><a class="page-link" href="/jekyll-theme-yat/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html">PORTFOLIO</a>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+     
+      if (y <= 0) {
+        scrollStatus = "top";
+      }  
+       else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+     
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+      
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">[JAVA] 메소드 오버라이딩</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <!--
+<p class="post-meta">
+    <time class="dt-published" datetime="2020-05-15T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> May 15, 2020
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 13 mins</span>
+  </p>
+--><div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="메소드-오버라이딩method-overriding">메소드 오버라이딩(Method Overriding)</h2>
+
+<p>같은 이름을 가지고 있으나 다른 기능을 할 때 메소드 <strong>오버로딩(overloading)</strong> 이라고 칭한 바 있다. 메소드 오버라이딩은 메소드를 <strong>재정의</strong> 하는 것을 의미한다. 
+슈퍼 클래스를 상속한 서브 클래스는 슈퍼 클래스 메소드의 이름, 매개변수 타입 및 개수, 리턴 타입 등 모든 것을 동일하게 작성한다. 메소드 무시하기, 덮어쓰기로 번역되기도 한다.</p>
+
+<p><img src="/assets/images/JavaImages/74.png" alt="image1"></p>
+
+<p>오버라이딩 시에는 서브 클래스에 오버라이딩 된 메소드가 무조건 실행되는 <strong>동적 바인딩</strong>이 발생한다.</p>
+
+<p><img src="/assets/images/JavaImages/75.png" alt="image2"></p>
+
+<p>위와 같은 사례에서 서브 클래스가 메소드를 호출하는 과정은 다음과 같다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Shape</code> 클래스를 상속받은 <code class="language-plaintext highlighter-rouge">Line</code> 클래스의 객체 <code class="language-plaintext highlighter-rouge">line</code>은 <code class="language-plaintext highlighter-rouge">Shape</code>과 <code class="language-plaintext highlighter-rouge">Line</code> 클래스의 멤버 및 메소드에 모두 접근 가능하다. 
+그러나 <code class="language-plaintext highlighter-rouge">draw()</code> 메소드를 호출할 때는 오버라이딩 된 <code class="language-plaintext highlighter-rouge">Line</code> 클래스 쪽 메소드가 호출된다.</p>
+
+<p><img src="/assets/images/JavaImages/76.png" alt="image3"></p>
+
+<p><code class="language-plaintext highlighter-rouge">Line</code> 클래스로 생성된 객체가 <code class="language-plaintext highlighter-rouge">Shape</code> 클래스로 업캐스팅 되었다고 해도 마찬가지다. 
+본디 업캐스팅 된 객체는 슈퍼 클래스의 객체로서 인식되지만, 이 경우엔 동적 바인딩에 의해 오버라이딩 된 서브 클래스 쪽 메소드가 호출된다.</p>
+
+<p><img src="/assets/images/JavaImages/77.png" alt="image4"></p>
+
+<h2 id="동적-바인딩">동적 바인딩</h2>
+
+<p>동적 바인딩은 실행할 메소드를 실행 시, 즉 <strong>런타임 시</strong>에 결정한다. 항상 오버라이딩 메소드가 호출된다는 점을 잊으면 안된다.</p>
+
+<p><img src="/assets/images/JavaImages/78.png" alt="image5"></p>
+
+<h2 id="오버라이딩의-목적">오버라이딩의 목적</h2>
+
+<p>오버라이딩의 가장 큰 목적은 여러개의 형태를 갖게 하는, 즉 <strong>다형성의 실현</strong>에 있다. 객체 지향의 특징 중 하나로, 오버로딩의 목적도 이와 동일하다.</p>
+
+<p>오버라이딩은 슈퍼 클래스에 선언된 메소드를 각 서브 클래스들이 자신만의 내용으로 새로 구현하는 것을 가능하게 한다. 상속을 통해 하나의 인터페이스에 서로 다른 내용을 구현하는 것이다.
+위에서 살펴보았던 상속 관계도에서 <code class="language-plaintext highlighter-rouge">Line</code> 클래스의 <code class="language-plaintext highlighter-rouge">draw()</code>는 선을 그리고, <code class="language-plaintext highlighter-rouge">Circle</code> 클래스의 <code class="language-plaintext highlighter-rouge">draw()</code>는 원을 그리며, <code class="language-plaintext highlighter-rouge">Rect</code> 클래스의 <code class="language-plaintext highlighter-rouge">draw()</code>는 사각형을 그리는 것을 통해 다형성이 어떻게 구현되었는지 확인할 수 있었다.</p>
+
+<p>또한 동적 바인딩을 통해 실행 중 다형성(실행시간 다형성)을 실현한다. 오버로딩은 컴파일 중 다형성을 실현하는 컴파일 타임 다형성을 실현한다는 점에서 둘은 차이가 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">비교요소</th>
+      <th>메소드 오버로딩</th>
+      <th>메소드 오버라이딩</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">선언</td>
+      <td>같은 클래스나 상속 관계에서 동일한 이름의 메소드 <strong>중복 작성</strong>
+</td>
+      <td>서브 클래스에서 슈퍼 클래스에 있는 메소드와 동일한 이름의 메소드 <strong>재작성</strong>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">관계</td>
+      <td>동일한 클래스 내 혹은 상속 관계</td>
+      <td>상속 관계</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">목적</td>
+      <td>이름이 같은 여러 개의 메소드를 중복 작성하여 사용의 편리성 향상. 다형성 실현.</td>
+      <td>슈퍼 클래스에 구현된 메소드를 무시하고 서브 클래스에서 새로운 기능의 메소드를 재정의하고자 함. 다형성 실현</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">조건</td>
+      <td>메소드 이름은 반드시 동일하고, 매개변수 타입이나 개수가 달라야 함.</td>
+      <td>메소드의 이름, 매개변수 타입과 개수, 리턴 타입이 <strong>모두 동일</strong>하여야 함.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">바인딩</td>
+      <td>정적 바인딩. 호출될 메소드는 컴파일 시에 결정.</td>
+      <td>동적 바인딩. 실행 시간에 오버라이딩된 메소드를 찾아 호출.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>다음 코드는 메소드 오버라이딩으로 다형성을 실현시키는 과정이다.</p>
+
+<p><img src="/assets/images/JavaImages/80.png" alt="image6"></p>
+
+<p>메인 메소드의 코드를 보면 <code class="language-plaintext highlighter-rouge">Shape</code> 클래스를 상속받은 <code class="language-plaintext highlighter-rouge">Line</code> 클래스의 객체를 생성, <code class="language-plaintext highlighter-rouge">paint</code> 메소드의 매개변수로 넘겨주는 것을 알 수 있다. 
+<code class="language-plaintext highlighter-rouge">paint</code> 메소드의 <code class="language-plaintext highlighter-rouge">p.draw()</code>는 매개변수로 받은 <code class="language-plaintext highlighter-rouge">p</code>객체의 <code class="language-plaintext highlighter-rouge">draw()</code> 메소드를 호출하는데,
+<code class="language-plaintext highlighter-rouge">line</code> 레퍼런스가 <code class="language-plaintext highlighter-rouge">Shape</code>과 <code class="language-plaintext highlighter-rouge">Line</code> 클래스 모두를 가리키고 있으나 오버라이딩 된 <code class="language-plaintext highlighter-rouge">Line</code> 클래스의 <code class="language-plaintext highlighter-rouge">draw()</code>만 호출된다(동적바인딩).</p>
+
+<p><code class="language-plaintext highlighter-rouge">paint(new Shape());</code> 코드를 제외한 다른 코드 또한 마찬가지로 슈퍼 클래스의 <code class="language-plaintext highlighter-rouge">draw()</code>가 아닌 오버라이딩 된 자신의 <code class="language-plaintext highlighter-rouge">draw()</code>를 실행함으로써 동적 바인딩이 이루어지고 다형성이 실현된다.</p>
+
+<p><img src="/assets/images/JavaImages/81.png" alt="image7"></p>
+
+<h2 id="오버라이딩의-활용">오버라이딩의 활용</h2>
+
+<p>오버라이딩은 <strong>연결 리스트(linked list)</strong> 를 만드는데 사용될 수 있다. 연결 리스트는 이름 그대로 데이터들을 일렬로 묶어놓은 것을 의미한다. 아래의 코드를 살펴보자.</p>
+
+<p><img src="/assets/images/JavaImages/82.png" alt="image8"></p>
+
+<p>위의 코드는 <code class="language-plaintext highlighter-rouge">Shape</code> 클래스를 슈퍼 클래스로 두고 <code class="language-plaintext highlighter-rouge">Line</code>, <code class="language-plaintext highlighter-rouge">Rect</code>, <code class="language-plaintext highlighter-rouge">Circle</code> 클래스를 서브 클래스로 둔 후, 각각의 서브 클래스에서 <code class="language-plaintext highlighter-rouge">draw()</code> 메소드를 오버라이딩 하였다.
+그리고 <code class="language-plaintext highlighter-rouge">paint</code> 메소드를 통해 메인 메소드에서 각각의 <code class="language-plaintext highlighter-rouge">draw()</code>를 호출하도록 만들었다.</p>
+
+<p>이제 아래의 코드를 살펴보자.</p>
+
+<p><img src="/assets/images/JavaImages/83.png" alt="image9"></p>
+
+<p>이는 앞선 <code class="language-plaintext highlighter-rouge">Line</code>, <code class="language-plaintext highlighter-rouge">Rect</code>, <code class="language-plaintext highlighter-rouge">Circle</code> 클래스를 활용하여 연결 리스트를 구현한 코드이다. 우선 <code class="language-plaintext highlighter-rouge">Shape</code> 클래스의 레퍼런스인 <code class="language-plaintext highlighter-rouge">start</code>, <code class="language-plaintext highlighter-rouge">last</code>, <code class="language-plaintext highlighter-rouge">obj</code>를 생성한다.
+<code class="language-plaintext highlighter-rouge">start</code>는 연결 리스트의 첫 번째 객체에 대한 레퍼런스를 가지고, <code class="language-plaintext highlighter-rouge">last</code>는 연결 리스트의 마지막 객체에 대한 레퍼런스를 가지며, <code class="language-plaintext highlighter-rouge">obj</code>는 <code class="language-plaintext highlighter-rouge">last</code>가 리스트의 마지막 객체를 가리킬 수 있도록 레퍼런스를 공유하는 역할을 한다.</p>
+
+<p>다시 말해, <code class="language-plaintext highlighter-rouge">start</code> 레퍼런스의 위치는 처음에 고정되지만, <code class="language-plaintext highlighter-rouge">obj</code>는 새로 생성된 객체(=마지막 객체가 갱신됨)의 레퍼런스를 가지고 있다가 <code class="language-plaintext highlighter-rouge">last</code>와 해당 레퍼런스 값을 공유하는 역할을 수행한다고 보면 된다.</p>
+
+<p>조금 더 자세히 살펴보자.</p>
+
+<p>우선 <code class="language-plaintext highlighter-rouge">start</code>, <code class="language-plaintext highlighter-rouge">last</code> 레퍼런스가 <code class="language-plaintext highlighter-rouge">Line</code> 객체를 가리키도록 한다. 현재는 하나의 객체뿐이므로 <code class="language-plaintext highlighter-rouge">Line</code> 객체는 일렬로 늘어선 연결 리스트에서 가장 처음이자 마지막에 위치하기 때문이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">start</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Line</span><span class="o">();</span> <span class="c1">//Line 객체 연결</span>
+ <span class="n">last</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>그 다음, <code class="language-plaintext highlighter-rouge">Rect</code> 객체를 <code class="language-plaintext highlighter-rouge">Line</code> 객체 바로 다음에 둘 것이기 때문에 <code class="language-plaintext highlighter-rouge">obj</code>에 <code class="language-plaintext highlighter-rouge">Rect</code> 클래스 객체의 레퍼런스를 저장한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Rect</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">obj</code>가 <code class="language-plaintext highlighter-rouge">Rect</code> 객체를 가리키게 되었다면 레퍼런스 값을 <code class="language-plaintext highlighter-rouge">last</code>에게 넘겨주어야 한다. 그런데, 한 가지 의문점이 생긴다. 
+우리는 ‘연결’ 리스트를 만드는 중이다. <code class="language-plaintext highlighter-rouge">start</code>와 <code class="language-plaintext highlighter-rouge">last</code> 가 어느 객체를 가리키는지 알 수 있다고 해서 그 객체들이 ‘연결’되었다고 볼 수 있는가? 
+이 의문을 해결하기 위해 <code class="language-plaintext highlighter-rouge">last.next</code>에 <code class="language-plaintext highlighter-rouge">obj</code> 값을 넣어 두 객체를 연결시켜주는 것이다. 말하자면 각 객체 내 슈퍼 클래스 멤버가 다른 객체의 레퍼런스를 가짐으로서 연결고리 역할을 하는 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">last</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">obj</span><span class="o">;</span> <span class="c1">//Rect 객체에 연결</span>
+ <span class="n">last</span> <span class="o">=</span> <span class="n">obj</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>만약 <code class="language-plaintext highlighter-rouge">last.next = obj;</code> 코드가 없다면 각각의 객체는 그저 독립적으로 존재하게 된다. 그것은 ‘연결’되었다고 볼 수 없는 것이다.
+따라서 <code class="language-plaintext highlighter-rouge">Shape</code>의 멤버에게 다음 객체의 레퍼런스를 갖게 함으로써 아래와 같이 ‘연결’ 형태를 갖춘 것이다.</p>
+
+<p><img src="/assets/images/JavaImages/87.png" alt="image10"></p>
+
+<p>이와 같은 행위를 반복하다보면 결국 일렬로 연결된 리스트를 얻게 된다. 총 4개의 객체를 연결시켜 만들어진 이 리스트는 첫 번째 객체의 슈퍼 클래스가 두 번째 객체 레퍼런스를 가지게 되고, 
+두 번째 객체의 슈퍼 클래스가 세 번째 객체의 레퍼런스를 가진다. 마지막에 위치한 객체는 기존에 <code class="language-plaintext highlighter-rouge">null</code>로 초기화 되어있던 <code class="language-plaintext highlighter-rouge">last.next</code>에 변화가 없어 그대로 <code class="language-plaintext highlighter-rouge">null</code> 값을 가진다.</p>
+
+<p>때문에 아래의 코드를 실행하게 되면, <code class="language-plaintext highlighter-rouge">p</code>가 가리키는 객체의 <code class="language-plaintext highlighter-rouge">draw()</code>를 출력되고, 다음 객체의 레퍼런스가 저장되어 있던 <code class="language-plaintext highlighter-rouge">next</code> 값이 <code class="language-plaintext highlighter-rouge">p</code>에 저장되어 
+다음 <code class="language-plaintext highlighter-rouge">draw()</code>를 출력한다. 이는 <code class="language-plaintext highlighter-rouge">p</code> 값이 <code class="language-plaintext highlighter-rouge">null</code>인 마지막 객체까지 반복된다.</p>
+
+<p><img src="/assets/images/JavaImages/88.png" alt="image11"></p>
+
+<h2 id="super-키워드">super 키워드</h2>
+
+<p><code class="language-plaintext highlighter-rouge">super</code> 키워드는 슈퍼 클래스의 멤버에 접근할 때 사용되는 레퍼런스로 <em>서브 클래스에서만 사용</em>된다. 
+슈퍼 클래스의 메소드를 호출하는 역할을 하며 컴파일러는 이를 정적 바인딩으로 처리한다. 오버라이딩을 통해 동적 바인딩이 이루어지지 않도록 하기 위해서는 해당 키워드가 필수적이다.</p>
+
+<p><img src="/assets/images/JavaImages/89.png" alt="image12"></p>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/java/2020/05/05/java8.html" title="[JAVA] 상속">[JAVA] 상속</a><a class="next" href="/jekyll-theme-yat/java/2020/05/21/java10.html" title="[JAVA] 추상클래스와 인터페이스">[JAVA] 추상클래스와 인터페이스</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%836.html" title="[JAVA] 추상클래스와 인터페이스">웹사이트 layout6</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/13/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%835.html" title="[JAVA] 추상클래스와 인터페이스">웹사이트 layout5</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/html5&amp;css3/2020/12/12/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%831.html" title="[JAVA] 추상클래스와 인터페이스">웹사이트 layout1</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/05/15/java9.html" title="[JAVA] 추상클래스와 인터페이스">[JAVA] 메소드 오버라이딩</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>27</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-HTML5&amp;CSS3">
+          HTML5&amp;CSS3 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JAVA">
+          JAVA <span>14</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JSP">
+          JSP <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-javascript">
+          javascript <span>4</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 Hwang Sumin</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Contact: hwang.sumin.0313@gmail.com </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

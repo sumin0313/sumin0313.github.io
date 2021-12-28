@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[JAVA] static과 final | SUMIN’s BLOG</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="[JAVA] static과 final">
+<meta name="author" content="Hwang Sumin">
+<meta property="og:locale" content="ko">
+<meta name="description" content="static 멤버 static 멤버는 클래스당 하나만 생성되는 멤버로, 객체를 생성하지 않고도 사용할 수 있는 멤버이다. 동일한 클래스의 모든 객체들이 공유하며 main() 메소드가 실행되기 전에 생성된다. 따라서 static 멤버는 static 멤버가 포함된 객체를 생성하기 전에도 사용할 수 있다. static 멤버는 클래스당 하나씩 생긴다고 해서 클래스 멤버라고도 부른다.">
+<meta property="og:description" content="static 멤버 static 멤버는 클래스당 하나만 생성되는 멤버로, 객체를 생성하지 않고도 사용할 수 있는 멤버이다. 동일한 클래스의 모든 객체들이 공유하며 main() 메소드가 실행되기 전에 생성된다. 따라서 static 멤버는 static 멤버가 포함된 객체를 생성하기 전에도 사용할 수 있다. static 멤버는 클래스당 하나씩 생긴다고 해서 클래스 멤버라고도 부른다.">
+<link rel="canonical" href="/jekyll-theme-yat/java/2020/05/04/java7.html">
+<meta property="og:url" content="/jekyll-theme-yat/java/2020/05/04/java7.html">
+<meta property="og:site_name" content="SUMIN’s BLOG">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-04T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="[JAVA] static과 final">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Hwang Sumin"},"description":"static 멤버 static 멤버는 클래스당 하나만 생성되는 멤버로, 객체를 생성하지 않고도 사용할 수 있는 멤버이다. 동일한 클래스의 모든 객체들이 공유하며 main() 메소드가 실행되기 전에 생성된다. 따라서 static 멤버는 static 멤버가 포함된 객체를 생성하기 전에도 사용할 수 있다. static 멤버는 클래스당 하나씩 생긴다고 해서 클래스 멤버라고도 부른다.","headline":"[JAVA] static과 final","dateModified":"2020-05-04T00:00:00+00:00","datePublished":"2020-05-04T00:00:00+00:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/java/2020/05/04/java7.html"},"url":"/jekyll-theme-yat/java/2020/05/04/java7.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="SUMIN's BLOG">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+ <!--<img class="site-favicon" title="SUMIN&#39;s BLOG" src="" onerror="this.style.display='none'">-->
+  <img class="site-favicon" title="HOME" src="" onerror="this.style.display='none'">
+  SUMIN's BLOG
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/menu.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a><a class="page-link" href="/jekyll-theme-yat/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.html">PORTFOLIO</a>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+     
+      if (y <= 0) {
+        scrollStatus = "top";
+      }  
+       else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+     
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+      
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">[JAVA] static과 final</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <!--
+<p class="post-meta">
+    <time class="dt-published" datetime="2020-05-04T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> May 04, 2020
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 10 mins</span>
+  </p>
+--><div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#JAVA">#JAVA</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="static-멤버">static 멤버</h2>
+
+<p><code class="language-plaintext highlighter-rouge">static</code> 멤버는 클래스당 하나만 생성되는 멤버로, 객체를 생성하지 않고도 사용할 수 있는 멤버이다. 동일한 클래스의 모든 객체들이 공유하며 <code class="language-plaintext highlighter-rouge">main()</code> 메소드가 실행되기 전에 생성된다.
+따라서 <code class="language-plaintext highlighter-rouge">static</code> 멤버는 <code class="language-plaintext highlighter-rouge">static</code> 멤버가 포함된 객체를 생성하기 전에도 사용할 수 있다. <code class="language-plaintext highlighter-rouge">static</code> 멤버는 클래스당 하나씩 생긴다고 해서 <strong>클래스 멤버</strong>라고도 부른다.</p>
+
+<p>반면 <code class="language-plaintext highlighter-rouge">non-static</code> 멤버는 객체가 생길 때 각 객체마다 생성되며 다른 객체들과 공유하지 않는다. 객체가 사라지면 <code class="language-plaintext highlighter-rouge">non-static</code> 멤버도 함께 사라지고 더 이상 접근할 수 없다. 
+<code class="language-plaintext highlighter-rouge">non-static</code> 각 객체마다 하나씩 생긴다고 해서 <strong>인스턴스 멤버</strong>라고 부른다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th>static 멤버</th>
+      <th>non-static멤버</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">선언</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">class Sample {</code> &lt;/br&gt;    <code class="language-plaintext highlighter-rouge">static int m;</code>&lt;/br&gt;    <code class="language-plaintext highlighter-rouge">static void g(){...}</code>&lt;/br&gt;<code class="language-plaintext highlighter-rouge">}</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">class Sample {</code>&lt;/br&gt;    <code class="language-plaintext highlighter-rouge">int n;</code>&lt;/br&gt;    <code class="language-plaintext highlighter-rouge">void g(){...}</code>&lt;/br&gt;<code class="language-plaintext highlighter-rouge">}</code>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">공간적 특성</td>
+      <td>멤버가 클래스당 하나 생성&lt;/br&gt;  - 멤버는 별도의 공간(클래스 코드가 적재되는 메모리)에 생성&lt;/br&gt;  - 클래스 멤버라고 부름</td>
+      <td>멤버가 객체마다 별도 존재&lt;/br&gt;  - 인스턴스 멤버라고 부름</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">시간적 특성</td>
+      <td>클래스 로딩 시에 멤버 생성 &lt;/br&gt;  - 객체가 생기기 전에 이미 생성 &lt;/br&gt;  - 객체가 생기기 전에도 사용 가능 &lt;/br&gt;  - 객체가 사라져도 멤버는 사라지지 않음 &lt;/br&gt;  - 멤버는 프로그램이 종료될 때 사라짐</td>
+      <td>객체 생성 시에 멤버 생성 &lt;/br&gt;  - 객체가 생길 때 멤버도 생성 &lt;/br&gt;  - 객체 생성 후 멤버 사용 가능 &lt;/br&gt;  - 객체가 사라지면 멤버도 사라짐</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">공유의 특성</td>
+      <td>동일한 클래스의 모든 객체들에 의해 공유됨</td>
+      <td>멤버는 공유되지 않고 객체 내 각각의 공간 유지</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="static-멤버의-생성과-활용-객체static멤버">static 멤버의 생성과 활용: 객체.static멤버</h2>
+
+<p>세 개의 <code class="language-plaintext highlighter-rouge">non-static</code> 멤버와 두 개의 <code class="language-plaintext highlighter-rouge">static</code> 멤버를 가지고 있는 <code class="language-plaintext highlighter-rouge">StaticSample</code> 클래스를 살펴보자.</p>
+
+<p><img src="/assets/images/JavaImages/43.png" alt="image1"></p>
+
+<h3 id="1-static-멤버의-생성">1. static 멤버의 생성</h3>
+
+<p>위 코드에서 <code class="language-plaintext highlighter-rouge">static</code> 멤버가 생성되는 시점은 <code class="language-plaintext highlighter-rouge">StaticSample</code>이 사용되기 시작하는 시점, 즉, 해당 클래스가 로딩되는 시점이다. 
+ 따라서 아래의 코드가 실행되는 시점에는 <code class="language-plaintext highlighter-rouge">static</code> 멤버 <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">f()</code>는 이미 존재 및 사용 가능한 상태이다.</p>
+
+<p><img src="/assets/images/JavaImages/44.png" alt="image2"></p>
+
+<p>위 코드를 거쳐 아래의 코드에 도달하면 하나의 <code class="language-plaintext highlighter-rouge">StaticSample</code> 객체가 생성된다. <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">f()</code>와는 달리 <code class="language-plaintext highlighter-rouge">n</code>, <code class="language-plaintext highlighter-rouge">g()</code>는 <strong>인스턴스 객체</strong>이므로 <code class="language-plaintext highlighter-rouge">s1</code> 객체가 생성 되어서야 비로소 만들어진다.</p>
+
+<p><img src="/assets/images/JavaImages/45.png" alt="image3"></p>
+
+<h3 id="2-static-멤버의-접근">2. static 멤버의 접근</h3>
+
+<p><code class="language-plaintext highlighter-rouge">static</code> 멤버는 <code class="language-plaintext highlighter-rouge">non-static</code> 멤버와 접근법이 동일하다. 객체.멤버명(필드/메소드)이 그것이다. 따라서 다음 코드는 <code class="language-plaintext highlighter-rouge">s1</code> 객체의 <code class="language-plaintext highlighter-rouge">static</code> 멤버인 <code class="language-plaintext highlighter-rouge">m</code>에 접근, 값을 50으로 설정한다.</p>
+
+<p><img src="/assets/images/JavaImages/46.png" alt="image4"></p>
+
+<h3 id="3-static-멤버의-공유">3. static 멤버의 공유</h3>
+
+<p>그리고 새로운 <code class="language-plaintext highlighter-rouge">StaticSample</code> 객체 <code class="language-plaintext highlighter-rouge">s2</code>를 생성하고 <code class="language-plaintext highlighter-rouge">s2</code>의 멤버 <code class="language-plaintext highlighter-rouge">n</code>에 값을 할당하면 <code class="language-plaintext highlighter-rouge">s1</code>과 <code class="language-plaintext highlighter-rouge">s2</code>의 인스턴스 객체 <code class="language-plaintext highlighter-rouge">n</code>은 서로 다른 값을 가지게 된다. 그러나 <code class="language-plaintext highlighter-rouge">static</code> 멤버인 <code class="language-plaintext highlighter-rouge">m</code>은 서로 공유하기 때문에 <code class="language-plaintext highlighter-rouge">h()</code>가 호출되고 나면, <code class="language-plaintext highlighter-rouge">s1.m</code>을 통해 50으로 설정되어 있던 <code class="language-plaintext highlighter-rouge">m</code>은 30으로 바뀌게 된다.</p>
+
+<p><img src="/assets/images/JavaImages/47.png" alt="image5"></p>
+
+<p>그러다 <code class="language-plaintext highlighter-rouge">static</code> 멤버인 <code class="language-plaintext highlighter-rouge">f()</code>를 호출하면 <code class="language-plaintext highlighter-rouge">m</code>의 값은 5로 바뀌는 것이다.</p>
+
+<p><img src="/assets/images/JavaImages/48.png" alt="image6"></p>
+
+<h2 id="static-멤버의-생성과-활용-클래스명static멤버">static 멤버의 생성과 활용: 클래스명.static멤버</h2>
+
+<p>위에서는 객체를 통해 <code class="language-plaintext highlighter-rouge">static</code> 멤버에 접근했다. 그러나 다른 방법도 있다. 처음에 이야기했듯 <code class="language-plaintext highlighter-rouge">static</code> 멤버는 클래스당 하나만 존재하기 때문에 클래스명으로도 접근 가능하다. 위의 코드를 아래와 같이 수정했다.</p>
+
+<p><img src="/assets/images/JavaImages/49.png" alt="image7"></p>
+
+<p>따라서 아래의 두 코드는 같은 기능을 수행한다.</p>
+
+<p><img src="/assets/images/JavaImages/50.png" alt="image8"></p>
+
+<h2 id="static의-활용">static의 활용</h2>
+
+<p>위에서 <code class="language-plaintext highlighter-rouge">static</code> 멤버와 클래스가 어떻게 작동하는지 살펴보았다. 그렇다면 이 둘은 어떤 경우에 사용하는 것일까?</p>
+
+<h3 id="1-전역-변수와-전역-함수를-만들-때">1. 전역 변수와 전역 함수를 만들 때</h3>
+
+<p>전역 변수와 전역 함수는 <code class="language-plaintext highlighter-rouge">static</code>으로 클래스에 작성한다. 대표적으로 자바에서 제공하는 <code class="language-plaintext highlighter-rouge">Math</code> 클래스가 그것이다. <code class="language-plaintext highlighter-rouge">Math</code> 클래스는 모든 필드와 메소드가 <code class="language-plaintext highlighter-rouge">public</code>으로 선언되어 있어 다른 모든 클래스에서 사용할 수 있다.</p>
+
+<p><img src="/assets/images/JavaImages/51.png" alt="image9"></p>
+
+<h3 id="2-공유-멤버를-작성할-때">2. 공유 멤버를 작성할 때</h3>
+
+<p>앞서 같은 클래스 내 생성자로 생성된 객체가 <code class="language-plaintext highlighter-rouge">static</code> 멤버를 공유한다는 것을 확인했다. <code class="language-plaintext highlighter-rouge">static</code> 필드나 메소드는 하나만 생성되기 때문에 클래스 내 객체들은 해당 생성자를 <strong>공유</strong>할 수 있다.</p>
+
+<h2 id="static의-활용-1">static의 활용</h2>
+
+<p><code class="language-plaintext highlighter-rouge">static</code> 메소드는 <code class="language-plaintext highlighter-rouge">non-static</code> 멤버에 <strong>접근할 수 없다.</strong> 객체가 생성되지 않은 상황에서도 <code class="language-plaintext highlighter-rouge">static</code> 메소드가 실행될 수 있기 때문에 동일한 시점에서 생성되지 않았을 가능성이 있는 <code class="language-plaintext highlighter-rouge">non-static</code> 메소드/필드는 사용이 불가하다. 그러나 반대로, <code class="language-plaintext highlighter-rouge">non-static</code> 메소드는 <code class="language-plaintext highlighter-rouge">static</code> 멤버를 사용 가능하다.</p>
+
+<p><img src="/assets/images/JavaImages/52.png" alt="image10"></p>
+
+<p>또한 <code class="language-plaintext highlighter-rouge">static</code> 메소드는 <code class="language-plaintext highlighter-rouge">this</code> 사용이 불가하다. 위와 같은 이유로, <code class="language-plaintext highlighter-rouge">static</code> 메소드는 객체가 생성되지 않은 상태에서도 호출이 가능하기 때문에 현재 객체를 가리키는 <code class="language-plaintext highlighter-rouge">this</code> 레퍼런스를 사용할 수 없는 것이다.</p>
+
+<p><img src="/assets/images/JavaImages/53.png" alt="image11"></p>
+
+<p>다양한 장단점을 살펴보았으나 객체 지향 프로그래밍 언어인 JAVA 에서 <code class="language-plaintext highlighter-rouge">static</code>은 사용이 <strong>지양</strong>되는 편이다. 그 이유는 <a href="unabated.tistory.com/entry/%EC%99%9C-%EC%9E%90%EB%B0%94%EC%97%90%EC%84%9C-static%EC%9D%98-%EC%82%AC%EC%9A%A9%EC%9D%84-%EC%A7%80%EC%96%91%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94%EA%B0%80">이곳</a>에서 확인해볼 수 있다.</p>
+
+<h2 id="final-클래스와-메소드">final 클래스와 메소드</h2>
+
+<p><code class="language-plaintext highlighter-rouge">final</code> 클래스는 상속, 오버라이딩(재정의)이 불가한 클래스를 의미한다.</p>
+
+<p><img src="/assets/images/JavaImages/54.png" alt="image12">
+<img src="/assets/images/JavaImages/55.png" alt="image13"></p>
+
+<p><code class="language-plaintext highlighter-rouge">final</code>로 작성된 필드는 <strong>상수</strong>를 선언할 때 사용된다. 상수 필드는 선언 시에 초기값을 지정하여야 하고 실행 중 값을 변경할 수 없다.</p>
+
+<p><img src="/assets/images/JavaImages/56.png" alt="image14">
+<img src="/assets/images/JavaImages/57.png" alt="image15"></p>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/java/2020/04/30/java6.html" title="[JAVA] 메소드와 접근지정자">[JAVA] 메소드와 접근지정자</a><a class="next" href="/jekyll-theme-yat/java/2020/05/05/java8.html" title="[JAVA] 상속">[JAVA] 상속</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/java/2020/06/25/ex5.html" title="[JAVA] 상속">exercise:상속</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2020/05/21/java10.html" title="[JAVA] 상속">[JAVA] 추상클래스와 인터페이스</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/javascript/2021/01/06/js1.html" title="[JAVA] 상속">[javascript] 가위바위보 게임 만들기</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/jsp/2021/12/08/jsp2.html" title="[JAVA] 상속">[JSP] 태그</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>27</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-HTML5&amp;CSS3">
+          HTML5&amp;CSS3 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JAVA">
+          JAVA <span>14</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-JSP">
+          JSP <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/menu.html#h-javascript">
+          javascript <span>4</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 Hwang Sumin</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Contact: hwang.sumin.0313@gmail.com </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
